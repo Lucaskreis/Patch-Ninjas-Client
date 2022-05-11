@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { api } from "../../api/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 
 export function Profile() {
@@ -17,16 +17,35 @@ export function Profile() {
 
   const { loggedInUser } = useContext(AuthContext);
 
+
   function handleLogOut() {
     localStorage.removeItem("loggedInUser");
     navigate("/");
   }
 
+
   return (
-    <>
-      <h1>{loggedInUser.user.name}</h1>
-      <p>{loggedInUser.user.email}</p>
-      <button onClick={handleLogOut}>Sair</button>
-    </>
+    <div>
+      <div>
+        <img src={loggedInUser.user.img} alt="imagem de perfil"/>
+        <h1>{loggedInUser.user.name}</h1>    
+        <Link to="/Edit"><button>Editar Perfil</button></Link>
+        <button onClick={handleLogOut}>Sair</button>
+      </div>
+      <div>
+        <div>
+          <h1>O que você precisa?</h1>
+          <Link to="/Trabalhos"><button></button></Link>
+        </div>
+        <div>
+          <h1>Veja o que estão precisando</h1>
+          <button></button>
+        </div>
+        <div>
+          <h1>Histórico</h1>
+          <h2>card</h2>
+        </div>
+      </div>
+    </div>
   );
 }
