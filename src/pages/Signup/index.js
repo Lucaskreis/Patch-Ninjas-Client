@@ -41,7 +41,7 @@ export function Signup() {
       const imgURL = await handleUpload();
       await api.post("/user/signup", { ...form, img: imgURL });
 
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

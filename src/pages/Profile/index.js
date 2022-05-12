@@ -29,13 +29,13 @@ export function Profile() {
       <div>
         <img src={loggedInUser.user.img} alt="imagem de perfil"/>
         <h1>{loggedInUser.user.name}</h1>    
-        <Link to="/Edit"><button>Editar Perfil</button></Link>
+        <Link to="/edit"><button>Editar Perfil</button></Link>
         <button onClick={handleLogOut}>Sair</button>
       </div>
       <div>
         <div>
           <h1>O que você precisa?</h1>
-          <Link to="/Trabalhos"><button></button></Link>
+          <Link to="/createjob"><button></button></Link>
         </div>
         <div>
           <h1>Veja o que estão precisando</h1>
