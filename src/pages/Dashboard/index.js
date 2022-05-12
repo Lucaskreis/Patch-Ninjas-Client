@@ -36,10 +36,8 @@ export function Dashboard() {
 
     return ( 
         <>
-
             <h1>Estão precisando</h1>
             <div>
-                
                     {
                         filteredVagas.map((currentVagas) => {
 
@@ -56,8 +54,6 @@ export function Dashboard() {
                     }
 
             </div>
-        
-        
         </>
     
 
