@@ -39,7 +39,7 @@ export function Profile() {
         </div>
         <div>
           <h1>Veja o que estão precisando</h1>
-          <button></button>
+          <Link to="/dashboard"><button>Ver</button></Link>
         </div>
         <div>
           <h1>Histórico</h1>
