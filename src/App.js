@@ -3,10 +3,11 @@ import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { AuthContextComponent } from "./contexts/authContext";
 import { Profile } from "./pages/Profile";
-import { Edit } from "./pages/Edit";
+import { UserEdit } from "./pages/userEdit";
 import { Trabalhos } from "./pages/Trabalhos";
 import { Dashboard } from "./pages/Dashboard";
 import { Historico } from "./pages/Historico";
+
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
-          {/* <Route path="/edit" element={<Edit/>} /> */}
+          <Route path="/userEdit" element={<UserEdit/>} /> 
           <Route path="/createjob" element={<Trabalhos/>} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/historico" element={<Historico />} />
