@@ -17,11 +17,11 @@ export function Signup() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleImage(e) {
+ /*  function handleImage(e) {
     setImg(e.target.files[0]);
-  }
+  } */
 
-  async function handleUpload() {
+  /* async function handleUpload() {
     try {
       const uploadData = new FormData();
       uploadData.append("picture", img);
@@ -32,14 +32,14 @@ export function Signup() {
     } catch (error) {
       console.log(error);
     }
-  }
+  } */
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     try {
-      const imgURL = await handleUpload();
-      await api.post("/user/signup", { ...form, img: imgURL });
+      //const imgURL = await handleUpload();
+      await api.post("/user/signup", { ...form});
 
       navigate("/");
     } catch (error) {
@@ -57,8 +57,8 @@ export function Signup() {
         value={form.name}
         onChange={handleChange}
       />
-      <label htmlFor="formImg">Sua foto de perfil:</label>
-      <input type="file" id="formImg" onChange={handleImage} />
+      {/* <label htmlFor="formImg">Sua foto de perfil:</label>
+      <input type="file" id="formImg" onChange={handleImage} /> */}
 
       <label htmlFor="formEmail">E-mail:</label>
       <input
