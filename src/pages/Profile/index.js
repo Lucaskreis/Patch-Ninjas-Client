@@ -29,7 +29,7 @@ export function Profile() {
       <div>
         <img src={loggedInUser.user.img} alt="imagem de perfil"/>
         <h1>{loggedInUser.user.name}</h1>    
-        <Link to="/edit"><button>Editar Perfil</button></Link>
+        <Link to="/userEdit"><button>Editar Perfil</button></Link>
         <button onClick={handleLogOut}>Sair</button>
       </div>
       <div>

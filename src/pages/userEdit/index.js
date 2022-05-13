@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
 
-export function Signup() {
+export function UserEdit() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
@@ -11,18 +11,44 @@ export function Signup() {
     confirmPassword: "",
   });
 
- 
+ // const [img, setImg] = useState("");
+
+ useEffect(()=> {
+     async function fetchCadastro() {
+         const response= await api.get("/user/profile");
+         setForm(response.data)
+    
+     }
+     fetchCadastro();
+ },[])
+
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
- 
+   /*{function handleImage(e) {
+    setImg(e.target.files[0]);
+  } 
+
+   async function handleUpload() {
+    try {
+      const uploadData = new FormData();
+      uploadData.append("picture", img);
+
+      const response = await api.post("/upload-image", uploadData);
+
+      return response.data.url;
+    } catch (error) {
+      console.log(error);
+    }
+  } }*/
+
   async function handleSubmit(e) {
     e.preventDefault();
 
     try {
-     
-      await api.post("/user/signup", { ...form});
+      //const imgURL = await handleUpload();
+      await api.patch("/user/update-profile", { ...form});
 
       navigate("/");
     } catch (error) {
@@ -40,8 +66,8 @@ export function Signup() {
         value={form.name}
         onChange={handleChange}
       />
-     
-     
+     { /*<label htmlFor="formImg">Sua foto de perfil:</label>
+      <input value = {form.img} type="file" id="formImg" onChange={handleImage} /> */}
 
       <label htmlFor="formEmail">E-mail:</label>
       <input
