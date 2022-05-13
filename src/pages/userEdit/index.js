@@ -6,9 +6,7 @@ export function UserEdit() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    email: ""
   });
 
  // const [img, setImg] = useState("");
@@ -50,7 +48,7 @@ export function UserEdit() {
       //const imgURL = await handleUpload();
       await api.patch("/user/update-profile", { ...form});
 
-      navigate("/");
+      navigate("/profile");
     } catch (error) {
       console.log(error);
     }
@@ -77,22 +75,7 @@ export function UserEdit() {
         value={form.email}
         onChange={handleChange}
       />
-      <label htmlFor="formPassword">Senha:</label>
-      <input
-        id="formPassword"
-        name="password"
-        type="password"
-        value={form.password}
-        onChange={handleChange}
-      />
-      <label htmlFor="formConfirmPassword">Confirmação de senha</label>
-      <input
-        id="formConfirmPassword"
-        type="password"
-        name="confirmPassword"
-        value={form.confirmPassword}
-        onChange={handleChange}
-      />
+      
       <button type="submit">Cadastrar</button>
     </form>
   );

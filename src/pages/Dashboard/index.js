@@ -44,7 +44,7 @@ export function Dashboard() {
                             const {title, local, prazo} = currentVagas;
                             return ( 
                                 <div>
-                                    <h1>{title}</h1>
+                                    <Link to={"/Mensagem"}><h1>{title}</h1></Link>
                                     <h2>{local}</h2>
                                     <h2>{prazo}</h2>
                                 </div> 
