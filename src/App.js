@@ -7,6 +7,7 @@ import { UserEdit } from "./pages/userEdit";
 import { Trabalhos } from "./pages/Trabalhos";
 import { Dashboard } from "./pages/Dashboard";
 import { Historico } from "./pages/Historico";
+import { Mensagem } from "./pages/Mensagem";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/createjob" element={<Trabalhos/>} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/historico" element={<Historico />} />
+          <Route path="/mensagem" element={<Mensagem />} />
         </Routes>
       </AuthContextComponent>
     </>

@@ -13,11 +13,9 @@ export function Trabalhos() {
   });
 
  
-
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
-
 
 
   async function handleSubmit(e) {
