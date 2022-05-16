@@ -15,6 +15,7 @@ export function Mensagem() {
     const [texto, setTexto] = useState({
         msg: "",
         name: loggedInUser.user.name,
+        jobs: params.jobsId
     })
     //console.log(texto)
     const [allTexto, setAllTexto] = useState([])
