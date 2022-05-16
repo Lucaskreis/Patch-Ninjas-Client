@@ -8,7 +8,7 @@ import { Trabalhos } from "./pages/Trabalhos";
 import { Dashboard } from "./pages/Dashboard";
 import { Historico } from "./pages/Historico";
 import { Mensagem } from "./pages/Mensagem";
-import {jobEdit} from "./pages/jobEdit";
+import { JobEdit } from "./pages/jobEdit";
 
 
 
@@ -23,7 +23,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/userEdit" element={<UserEdit/>} /> 
           <Route path="/createjob" element={<Trabalhos/>} />
-          <Route path="/jobEdit" element={<jobEdit/>} />
+          <Route path="/jobEdit" element={<JobEdit/>} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/historico" element={<Historico />} />
           <Route path="/mensagem/:jobId" element={<Mensagem />} />

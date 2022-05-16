@@ -1,7 +1,7 @@
 import {Link } from "react-router-dom";
 import {api} from "../../api/api";
 import { useEffect, useState } from "react";
-import { AuthContext } from "../../contexts/authContext";
+
 
 
 export function Historico() {
