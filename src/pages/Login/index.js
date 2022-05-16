@@ -103,7 +103,7 @@ const SMiddleSection = styled.div`
 display: flex;
 justify-content: space-around;
 text-align: center;
-margin-top: -50px;
+margin-top: 10px;
 
 
  & img {
