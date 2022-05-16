@@ -11,9 +11,11 @@ import { Mensagem } from "./pages/Mensagem";
 import {jobEdit} from "./pages/jobEdit";
 
 
+
 function App() {
   return (
     <>
+      
       <AuthContextComponent>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -24,9 +26,10 @@ function App() {
           <Route path="/jobEdit" element={<jobEdit/>} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/historico" element={<Historico />} />
-          <Route path="/mensagem" element={<Mensagem />} />
+          <Route path="/mensagem/:jobId" element={<Mensagem />} />
         </Routes>
       </AuthContextComponent>
+      
     </>
   );
 }
