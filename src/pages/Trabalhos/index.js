@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { api } from "../../api/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/authContext";
 
 export function Trabalhos() {
   const navigate = useNavigate();
@@ -76,4 +77,8 @@ export function Trabalhos() {
       </form>
     </>
   );
+  
+ 
+  
+      
 }

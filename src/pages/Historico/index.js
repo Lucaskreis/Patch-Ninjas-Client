@@ -1,7 +1,8 @@
-import {Link } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import {api} from "../../api/api";
 import { useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
+
 
 
 export function Historico() {
@@ -9,6 +10,8 @@ export function Historico() {
     const [profile, setProfile] = useState([{}]);
 
     const [isLoad, setIsLoad] = useState(true);
+
+    const navigate = useNavigate();
 
     
     
@@ -43,6 +46,7 @@ export function Historico() {
                                 <Link to={`/Mensagem/${_id}`}> <h1>{title}</h1></Link>
                                     <h2>{local}</h2>
                                     <h2>{prazo}</h2>
+                                    <Link to={`/jobEdit/${_id}`}>Edit Job</Link>
                                 </div> 
                             );
                         })
@@ -56,6 +60,9 @@ export function Historico() {
         
         </>
      );
+
+
+
 }
 
 export default Historico;

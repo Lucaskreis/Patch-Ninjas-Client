@@ -23,7 +23,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/userEdit" element={<UserEdit/>} /> 
           <Route path="/createjob" element={<Trabalhos/>} />
-          <Route path="/JobEdit" element={<JobEdit/>} />
+          <Route path="/jobEdit/:jobEdit" element={<JobEdit/>} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/historico" element={<Historico />} />
           <Route path="/mensagem/:jobId" element={<Mensagem />} />
