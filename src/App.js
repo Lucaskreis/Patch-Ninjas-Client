@@ -9,6 +9,7 @@ import { Dashboard } from "./pages/Dashboard";
 import { Historico } from "./pages/Historico";
 import { Mensagem } from "./pages/Mensagem";
 import { JobEdit } from "./pages/jobEdit";
+import "../src/index.css"
 
 
 
@@ -35,3 +36,6 @@ function App() {
 }
 
 export default App;
+
+
+// ========================================= STYLES ==================================== //
