@@ -23,16 +23,15 @@ export function Dashboard() {
     }, [])
 
     const filteredVagas = vagas.filter((elemento) => {
-        console.log(elemento)
+        
 
-        if(elemento.user !==Context.loggedInUser.user._id) {
+        if(elemento.user !== Context.loggedInUser.user._id) {
             return elemento;
         }
-        console.log(vagas)
-        console.log(Context.loggedInUser.user._id);
+       
     });
 
-    console.log(filteredVagas)
+    console.log(filteredVagas._id)
 
     return ( 
         <>
@@ -41,10 +40,10 @@ export function Dashboard() {
                     {
                         filteredVagas.map((currentVagas) => {
 
-                            const {title, local, prazo} = currentVagas;
+                            const {title, local, prazo, _id} = currentVagas;
                             return ( 
                                 <div>
-                                    <Link to={"/Mensagem"}><h1>{title}</h1></Link>
+                                    <Link to={`/Mensagem/${_id}`}><h1>{title}</h1></Link>
                                     <h2>{local}</h2>
                                     <h2>{prazo}</h2>
                                 </div> 
