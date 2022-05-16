@@ -111,7 +111,7 @@ export default Profile;
 // =========================== STYLES ============================= // 
 
  const SContainer = styled.div`
-  //background-color: #253D71;
+  background-color: #253D71;
   position: absolute;
   object-fit: cover;
   height: 99%;
