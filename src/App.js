@@ -8,11 +8,14 @@ import { Trabalhos } from "./pages/Trabalhos";
 import { Dashboard } from "./pages/Dashboard";
 import { Historico } from "./pages/Historico";
 import { Mensagem } from "./pages/Mensagem";
+import { NavBar } from "./components/NavBar/NavBar";
+
 
 
 function App() {
   return (
     <>
+      <NavBar/>
       <AuthContextComponent>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -22,9 +25,10 @@ function App() {
           <Route path="/createjob" element={<Trabalhos/>} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/historico" element={<Historico />} />
-          <Route path="/mensagem" element={<Mensagem />} />
+          <Route path="/mensagem/:jobId" element={<Mensagem />} />
         </Routes>
       </AuthContextComponent>
+      
     </>
   );
 }

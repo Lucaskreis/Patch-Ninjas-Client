@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
+import "./index.css"
 
 export function Profile() {
   // const [user, setUser] = useState({ name: "", email: "" });
@@ -25,25 +26,29 @@ export function Profile() {
 
 
   return (
-    <div>
-      <div>
-        <img src={loggedInUser.user.img} alt="imagem de perfil"/>
-        <h1>{loggedInUser.user.name}</h1>    
-        <Link to="/userEdit"><button>Editar Perfil</button></Link>
-        <button onClick={handleLogOut}>Sair</button>
+    <div className="mainContainer">
+      <div className="perfil">
+        <div className="menu" >
+          <img src={loggedInUser.user.img} alt="imagem de perfil" className="profileImg"/>
+          <h1>{loggedInUser.user.name}</h1>
+        </div>  
+        <div className="btnContainer">  
+          <Link to="/userEdit"><button>Editar Perfil</button></Link>
+          <button onClick={handleLogOut}>Sair</button>
+        </div>
       </div>
-      <div>
-        <div>
-          <h1>O que você precisa?</h1>
-          <Link to="/createjob"><button></button></Link>
+      <div className="profileContainer">
+        <div className="linksProfile">
+        <Link to="/createjob"> <h1>O que você está precisando?</h1></Link>
+          {/*  <button></button>*/}
         </div>
-        <div>
-          <h1>Veja o que estão precisando</h1>
-          <Link to="/dashboard"><button>Ver</button></Link>
+        <div className="linksProfile">
+        <Link to="/dashboard"><h1>Veja o que estão precisando</h1></Link>
+         {/* <button>Ver</button>*/}
         </div>
-        <div>
-          <h1>Histórico</h1>
-          <Link to="/historico"><button>Ver suas requisições</button></Link>
+        <div className="linksProfile">
+        <Link to="/historico"><h1>Histórico</h1></Link>
+          {/*<button>Ver suas requisições</button>*/}
         </div>
       </div>
     </div>
