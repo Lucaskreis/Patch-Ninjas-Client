@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
+
 //import { motion } from "framer-motion"
 import styled from "styled-components"
 import Ninja from "../Assets/images/patch.png"
@@ -35,6 +36,7 @@ export function Profile() {
   }
 
   return (
+
     <SContainer>
 
         <SHeader>
@@ -83,6 +85,7 @@ export function Profile() {
 
       </SCards>
     </SContainer>
+
   );
 }
 

@@ -1,0 +1,35 @@
+
+.loginSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+.loginContainer {
+    margin: 100px;
+    margin-top: 200px;
+    margin-right: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 250px;
+    height: 500px;
+    
+}
+.input {
+    width: 250px;
+    margin-top: 15px;
+}
+.btnContainer {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.loginButton {
+    width: 80px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}

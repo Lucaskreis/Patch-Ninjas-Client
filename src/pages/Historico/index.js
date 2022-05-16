@@ -37,10 +37,10 @@ export function Historico() {
             {
                         profile.jobs.map((currentProfile) => {
 
-                            const {title, local, prazo} = currentProfile;
+                            const {title, local, prazo, _id} = currentProfile;
                             return ( 
                                 <div>
-                                    <h1>{title}</h1>
+                                <Link to={`/Mensagem/${_id}`}> <h1>{title}</h1></Link>
                                     <h2>{local}</h2>
                                     <h2>{prazo}</h2>
                                 </div> 
