@@ -1,0 +1,27 @@
+.navBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80px;
+    margin: 0px;
+    background-color: black;
+}
+.rigthSection{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+    gap: 100px;
+    width: 1250px;
+    text-decoration: none;
+    
+}
+.logo{
+    height: 25px;
+    margin-left: 40px;
+}
+.link{
+    text-decoration: none;
+    color: white;
+    
+}

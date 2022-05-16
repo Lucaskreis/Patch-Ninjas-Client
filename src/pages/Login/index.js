@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
+import "./index.css"
 
 export function Login() {
   const [form, setForm] = useState({
@@ -33,22 +34,37 @@ export function Login() {
   }
 
   return (
-    <form onSubmit={handleSumit}>
-      <label>Email:</label>
-      <input
-        type="email"
-        name="email"
-        value={form.email}
-        onChange={handleChange}
-      />
-      <label>Senha:</label>
-      <input
-        type="password"
-        name="password"
-        value={form.password}
-        onChange={handleChange}
-      />
-      <button type="submit">Entrar!</button>
-    </form>
+    <div>
+      <div>
+
+      </div>
+      <div className="loginSection">
+        <form onSubmit={handleSumit} className="loginContainer">
+          <div>
+          <label>Email:  </label>
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              className="input"
+            />
+          </div>
+          <div>
+            <label>Senha:  </label>
+            <input
+              type="password"
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+              className="input"
+            />
+          </div>
+          <div className="btnContainer">
+            <button type="submit" className="loginButton">Entrar!</button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
