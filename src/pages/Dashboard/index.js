@@ -70,7 +70,7 @@ export function Dashboard() {
                                         <Link to={`/Mensagem/${_id}`}><button className="button1">Leave a Message</button></Link>
                                     </div>
                                     <div>
-                                        <button className="button2">WhatsApp</button>
+                                        <button className="button2"><a target="_blank" href='https://api.whatsapp.com/send?1=pt_BR&phone=5500000000000'>WhatsApp</a></button>
                                     </div>
                                 </SCard> 
 

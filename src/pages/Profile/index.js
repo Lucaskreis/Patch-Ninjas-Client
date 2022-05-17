@@ -75,14 +75,14 @@ export function Profile() {
 
       <SCards>
         
-          <div className="card1">
-            <SImg src={Card1} alt=""/>
-            <div className="text1">
+      <Link to="/createjob">  <div className="card1">
+          <SImg src={Card1} alt=""/>
+           <div className="text1">
               <h1>FIND A WORKER</h1>
-              <Link to="/createjob"><button>Ask a Work</button></Link>
+              <button>Ask a Work</button>
             </div>
             
-          </div>
+          </div></Link>
 
           <div className="card2">
             <SImg src={Card2} alt=""/>

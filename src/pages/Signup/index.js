@@ -12,6 +12,8 @@ export function Signup() {
     email: "",
     password: "",
     confirmPassword: "",
+    phone: "",
+    address: ""
   });
 
  
@@ -64,6 +66,23 @@ export function Signup() {
               value={form.email}
               onChange={handleChange}
             />
+            <label htmlFor="formphone">Telefone:</label>
+            <input
+              id="formphone"
+              name="phone"
+              type="text"
+              value={form.phone}
+              onChange={handleChange}
+            />
+            <label htmlFor="formaddress">Endereço:</label>
+            <input
+              id="formaddress"
+              name="address"
+              type="text"
+              value={form.address}
+              onChange={handleChange}
+            />
+
             <label htmlFor="formPassword">Password</label>
             <input
               id="formPassword"

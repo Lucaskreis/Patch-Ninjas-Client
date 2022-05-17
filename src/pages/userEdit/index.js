@@ -10,7 +10,9 @@ export function UserEdit() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
-    email: ""
+    email: "",
+    phone: "",
+    address: ""
   });
 
  // const [img, setImg] = useState("");
@@ -88,6 +90,23 @@ export function UserEdit() {
             name="email"
             type="email"
             value={form.email}
+            onChange={handleChange}
+          />
+          <label htmlFor="formTelefone">Telefone:</label>
+          <input
+            id="formTelefone"
+            name="telefone"
+            type="text"
+            value={form.phone}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="formaddress">Endereço:</label>
+          <input
+            id="formaddress"
+            name="address"
+            type="text"
+            value={form.address}
             onChange={handleChange}
           />
           <button type="submit">CONFIRM</button>
