@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { api } from "../../api/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components"
 import Patch from "../Assets/images/patch.png"
 import Frase from "../Assets/images/login.png"
@@ -77,6 +77,7 @@ export function Login() {
           <div className="btnContainer">
             <button type="submit" className="loginButton">SIGN IN</button>
             <h4>Forgot your password?</h4>
+            <Link to="/signup"><h3>CREATE MY ACCOUNT</h3></Link>
           </div>
         </form>
         </SLogin>
@@ -119,7 +120,7 @@ margin-top: 10px;
     background-color: #D9D9D9;
     color:#5D5E5F;
     font-family: "Montserrat";
-    cursor: pointer;
+    
 
     ::placeholder {
       color: #B1C1B4;
@@ -145,7 +146,7 @@ border: 1px solid white;
 border-radius: 15px;
 padding: 25px;
 background-color: white;
-height: 300px;
+height: 380px;
 
 
 & img {
@@ -158,7 +159,7 @@ margin-left: 15px;
 }
 
 & h1 {
-  color: #D9D9D9;
+  color: black;
   font-family: "Montserrat";
   text-align: center;
   font-style: italic;
@@ -170,7 +171,22 @@ margin-left: 15px;
 & h4 {
   font-family: "Montserrat";
   text-align: center;
-  color: #D9D9D9;
+  color: #5D5E5F;
+  margin-top: 14px;
+  font-style: oblique;
+}
+
+& h3 {
+  /* border: 1px solid #D9D9D9;
+  border-radius: 15px;
+  background-color: #D9D9D9; */
+  font-family: "Montserrat";
+  text-align: center;
+  color: #5D5E5F;
+  margin-top: 62px;
+  align-content: center;
+  cursor: pointer;
+  
 }
 `
 
