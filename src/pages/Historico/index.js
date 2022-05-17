@@ -47,6 +47,7 @@ export function Historico() {
                                     <h2>{local}</h2>
                                     <h2>{prazo}</h2>
                                     <Link to={`/jobEdit/${_id}`}>Edit Job</Link>
+                                    <Link to={`/jobDelete/${_id}`}>Delete Job</Link>
                                 </div> 
                             );
                         })
