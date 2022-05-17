@@ -68,6 +68,15 @@ export function Trabalhos() {
           onChange={handleChange}
           placeholder="Service Type"
         />
+        <form>
+          <select name="tags">
+          <option value="WD" selected>Web Develop</option>
+          <option value="UXUI">UX/UI</option>
+          <option value="DI">Data Analytics</option>
+          
+          </select>
+        </form>
+        
         
         <input
           id="formPrazo"
@@ -96,19 +105,19 @@ export function Trabalhos() {
             placeholder="Description"
             
           />
-        </div>   
+        </div> 
+          
         <div>
           <button type="submit">CONFIRM</button>
         </div>
       </form>
+    
 
       </SForms>
 
     </>
   );
-  
- 
-  
+
       
 }
 

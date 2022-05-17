@@ -61,6 +61,11 @@ export function UserEdit() {
       console.log(error);
     }
   }
+    function deleteUser() {
+      api.delete(`/user/delete-user}`)
+     // navigate("/");
+      return
+  }
 
   return (
     <>
@@ -110,6 +115,7 @@ export function UserEdit() {
             onChange={handleChange}
           />
           <button type="submit">CONFIRM</button>
+          <button onClick={deleteUser}>DELETE</button>
         </form>
       </SInput>
 
