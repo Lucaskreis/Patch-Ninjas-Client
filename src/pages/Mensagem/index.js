@@ -26,31 +26,14 @@ export function Mensagem() {
     const [allTexto, setAllTexto] = useState([])
     const [sent, setSent] = useState(false)
 
-    function handleChange(e) {
-        setTexto({ ...texto, [e.target.name]: e.target.value });
-        console.log(texto)
-      }
-    //console.log(loggedInUser)
-    async function handleSubmit(e) {
-    e.preventDefault();
     
-    setSent(true)
-    
-    
-    try {
-     await api.post("/messages/new-msg", { ...texto});
-     //await api.post("/jobs/create-job", { ...idMsg});
-        
-     
-    } catch (error) {
-      console.log(error);
-    }
-  }
     useEffect(() => {
         async function fetchAllTexto() {
             const response = await api.get("/messages/all-msg");
             console.log(response.data);
-            const spreadData = [...response.data];
+            setAllTexto([...response.data])
+          
+           /* const spreadData = [...response.data];
             const filteredMsgsporJobs = spreadData.filter((element) => {
                 if(element._id === params.jobId){
                     return(element)
@@ -72,25 +55,44 @@ export function Mensagem() {
          } })
             
           
-            console.log(filteredMsgsporUser)
+            console.log(filteredMsgsporUser)*/
         }
+        
         fetchAllTexto()
         setSent(false)
     },[sent])  
     
  
-   /*const msgfiltrada = allTexto.filter((elemento) => {
+   const msgfiltrada = allTexto.filter((elemento) => {
     if(elemento._id === params.jobId ){
            console.log(elemento)
-         if(elemento.msg.user === loggedInUser.user._id){   
-            
+
                return elemento;
-       
-         }}
+         }
         
    })
+   function handleChange(e) {
+    setTexto({ ...texto, [e.target.name]: e.target.value });
+    console.log(texto)
+  }
+//console.log(loggedInUser)
+async function handleSubmit(e) {
+e.preventDefault();
 
-console.log(msgfiltrada)*/
+setSent(true)
+
+
+try {
+ await api.post("/messages/new-msg", { ...texto});
+ //await api.post("/jobs/create-job", { ...idMsg});
+    
+ 
+} catch (error) {
+  console.log(error);
+}
+}
+
+console.log(msgfiltrada)
     return (
         <div>
             <h1>Mensagens</h1>
@@ -104,15 +106,20 @@ console.log(msgfiltrada)*/
             <button type="submit" >Enviar</button>
             </form>
             <div>
-                <ul> 
-                {/*filteredMsgsporUser.map((item) =>{
-                    return(
-                        <div>
-                        <h1>{item.msg.name}</h1>
-                        <h1>{item.msg.msg}</h1>
-                        </div>
+                <ul>
+                    {msgfiltrada.map((item) =>{
+                        console.log(item)
+                        return( item.msg.map((element) => {
+                            return(
+                                <>
+                                    <li>{element.name}: {element.msg}</li>
+                                </>
+                            )
+                            
+                        })
+                          
                     )
-                })*/}
+                })}
                     
                 </ul>
             </div>

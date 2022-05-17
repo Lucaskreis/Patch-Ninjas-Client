@@ -67,7 +67,7 @@ export function Trabalhos() {
         
         <input
           id="formPrazo"
-          type="text"
+          type="date"
           name="prazo"
           value={form.prazo}
           onChange={handleChange}
