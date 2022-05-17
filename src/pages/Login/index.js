@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
-import "./index.css"
+
 
 export function Login() {
   const [form, setForm] = useState({

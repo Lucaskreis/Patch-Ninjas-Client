@@ -13,7 +13,7 @@ export function JobEdit() {
 
  useEffect(()=> {
      async function fetchTrabalho() {
-         const response= await api.get("/user/Trabalhos");
+         const response= await api.get("/jobs/Trabalhos");
          setForm(response.data)
     
      }
@@ -31,7 +31,7 @@ export function JobEdit() {
 
     try {
       
-      await api.patch("/user/update-Trabalhos", { ...form});
+      await api.patch("/jobs/update-Trabalhos", { ...form});
 
       navigate("/createjob");
     } catch (error) {
