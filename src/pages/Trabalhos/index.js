@@ -1,9 +1,13 @@
 import { useState, useContext } from "react";
 import { api } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
-import Patch from "../Assets/images/patch.png";
+
 import { AuthContext } from "../../contexts/authContext";
+
+import Patch from "../Assets/images/patch.png";
+
 import styled from "styled-components"
+
 
 export function Trabalhos() {
   const navigate = useNavigate();
@@ -102,6 +106,10 @@ export function Trabalhos() {
 
     </>
   );
+  
+ 
+  
+      
 }
 
 export default Trabalhos;

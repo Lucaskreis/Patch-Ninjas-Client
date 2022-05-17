@@ -1,4 +1,4 @@
-import {Link } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import {api} from "../../api/api";
 import { useEffect, useState, useContext } from "react";
 import Patch from "../Assets/images/patch.png";
@@ -8,13 +8,20 @@ import Historic1 from "../Assets/images/historic1.png"
 import Historic2 from "../Assets/images/historic2.png"
 
 
+
 export function Historico() {
 
     const [profile, setProfile] = useState([{}]);
 
     const [isLoad, setIsLoad] = useState(true);
 
+
+    const navigate = useNavigate();
+
+    
+
     const { loggedInUser } = useContext(AuthContext);
+
     
 
     useEffect (() => {
@@ -116,10 +123,16 @@ export function Historico() {
                                 {/* <div>
                                     <h2>{local}</h2>
                                     <h2>{prazo}</h2>
+
+                                    <Link to={`/jobEdit/${_id}`}>Edit Job</Link>
+                                    <Link to={`/jobDelete/${_id}`}>Delete Job</Link>
+                                </div> 
+
                                 </div> */}
                                 
                                 </div>
                                 
+
                             );
                         })
 
@@ -135,6 +148,9 @@ export function Historico() {
         
         </>
      );
+
+
+
 }
 
 export default Historico;
