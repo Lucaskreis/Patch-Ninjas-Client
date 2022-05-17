@@ -28,6 +28,7 @@ export function Profile() {
   const { loggedInUser } = useContext(AuthContext);
   //const [selectedId, setSelectedId] = useState(null);
 
+console.log(loggedInUser);
 
   function handleLogOut() {
     localStorage.removeItem("loggedInUser");
@@ -52,7 +53,7 @@ export function Profile() {
               <button onClick={handleLogOut}>Sair</button>
             </SName>
           <div>
-            <img src={loggedInUser.user.img} alt="imagem de perfil"/> 
+            <img className="photo" src={loggedInUser.user.img} alt="imagem de perfil"/> 
           </div>
         </SHeader>
 
@@ -123,6 +124,13 @@ export default Profile;
 const SHeader = styled.div`
 display: flex;
 justify-content: space-between;
+
+& .photo {
+  border-radius: 200px;
+  width: 150px;
+  margin-top: 10px;
+  margin-right: 5px;
+}
 
 & img {
   width: 290px;
