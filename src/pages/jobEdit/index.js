@@ -97,3 +97,6 @@ export function JobEdit() {
     </form>
   );
 }
+
+
+export default JobEdit;

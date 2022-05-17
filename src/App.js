@@ -8,8 +8,12 @@ import { Trabalhos } from "./pages/Trabalhos";
 import { Dashboard } from "./pages/Dashboard";
 import { Historico } from "./pages/Historico";
 import { Mensagem } from "./pages/Mensagem";
+
 import {JobEdit} from "./pages/jobEdit";
 import {JobDelete} from "./pages/JobDelete";
+
+import "../src/index.css"
+
 
 
 
@@ -24,8 +28,10 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/userEdit" element={<UserEdit/>} /> 
           <Route path="/createjob" element={<Trabalhos/>} />
+
           <Route path="/jobEdit/:jobEdit" element={<JobEdit/>} />
           <Route path="/jobDelete/:jobDelete" element={<JobDelete/>} />
+
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/historico" element={<Historico />} />
           <Route path="/mensagem/:jobId" element={<Mensagem />} />
@@ -37,3 +43,6 @@ function App() {
 }
 
 export default App;
+
+
+// ========================================= STYLES ==================================== //
