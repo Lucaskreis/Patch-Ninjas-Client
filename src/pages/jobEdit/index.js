@@ -1,26 +1,35 @@
 import { useEffect, useState } from "react";
 import { api } from "../../api/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export function JobEdit() {
   const navigate = useNavigate();
+  const {jobEdit} = useParams();
   const [form, setForm] = useState({
-    name: "",
-    email: ""
+    title: "",
+    description: "",
+    prazo: "",
+    tag:"",
+    local:""
   });
+
+ 
 
  // const [img, setImg] = useState("");
 
  useEffect(()=> {
      async function fetchTrabalho() {
-         const response= await api.get("/jobs/Trabalhos");
-         setForm(response.data)
+         const response= await api.get(`/jobs/job/${jobEdit}`);
+         console.log(response.data)
+         setForm({...response.data[0]})
+         
     
      }
      fetchTrabalho();
  },[])
 
   function handleChange(e) {
+    console.log(e.target.value);
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
@@ -31,14 +40,14 @@ export function JobEdit() {
 
     try {
       
-      await api.patch("/jobs/update-Trabalhos", { ...form});
+      await api.patch(`/jobs/update-job/${jobEdit}`, { ...form});
 
       navigate("/createjob");
     } catch (error) {
       console.log(error);
     }
   }
-
+      console.log(form)
   return (
     <form onSubmit={handleSubmit}>
         <label htmlFor="formTitle">Título:</label>
