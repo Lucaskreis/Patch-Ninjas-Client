@@ -8,7 +8,8 @@ import { Trabalhos } from "./pages/Trabalhos";
 import { Dashboard } from "./pages/Dashboard";
 import { Historico } from "./pages/Historico";
 import { Mensagem } from "./pages/Mensagem";
-import {JobEdit} from "./pages/jobEdit/";
+import { JobEdit } from "./pages/jobEdit";
+import "../src/index.css"
 
 
 
@@ -18,7 +19,7 @@ function App() {
       
       <AuthContextComponent>
         <Routes>
-          <Route path="/" element={<Login />} />
+          
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/userEdit" element={<UserEdit/>} /> 
@@ -35,3 +36,6 @@ function App() {
 }
 
 export default App;
+
+
+// ========================================= STYLES ==================================== //

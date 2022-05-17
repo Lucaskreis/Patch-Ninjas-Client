@@ -6,6 +6,9 @@ import { AuthContext } from "../../contexts/authContext";
 //import { motion } from "framer-motion"
 import styled from "styled-components"
 import Ninja from "../Assets/images/patch.png"
+import Card1 from "../Assets/images/card1.png"
+import Card2 from "../Assets/images/card2.png"
+import Card3 from "../Assets/images/card3.png"
 
 
 
@@ -40,13 +43,17 @@ export function Profile() {
     <SContainer>
 
         <SHeader>
-          <img src={Ninja} alt={loggedInUser.user.name} />
+          <div>
+            <img src={Ninja} alt={loggedInUser.user.name} />
+          </div>
             <SName>
               <h1>{loggedInUser.user.name}</h1>
               <button onClick={handleEdit}>Editar Perfil</button>
               <button onClick={handleLogOut}>Sair</button>
             </SName>
-          <img src={loggedInUser.user.img} alt="imagem de perfil"/> 
+          <div>
+            <img src={loggedInUser.user.img} alt="imagem de perfil"/> 
+          </div>
         </SHeader>
 
         {/* {items.map(item => (
@@ -69,18 +76,28 @@ export function Profile() {
       <SCards>
         
           <div className="card1">
-            <h1>FIND A WORKER</h1>
-            <Link to="/createjob"><button>Ask a Work</button></Link>
+            <SImg src={Card1} alt=""/>
+            <div className="text1">
+              <h1>FIND A WORKER</h1>
+              <Link to="/createjob"><button>Ask a Work</button></Link>
+            </div>
+            
           </div>
 
           <div className="card2">
-            <h1>FIND A WORK</h1>
-            <Link to="/dashboard"><button>See Works</button></Link>
+            <SImg src={Card2} alt=""/>
+            <div className="text2">
+              <h1>FIND A WORK</h1>
+              <Link to="/dashboard"><button>See Works</button></Link>
+            </div>
           </div>
 
           <div className="card3">
-            <h1>YOUR HISTORIC</h1>
-            <Link to="/historico"><button>See Historic</button></Link>
+            <SImg src={Card3} alt=""/>
+            <div className="text3">
+              <h1>YOUR HISTORIC</h1>
+              <Link to="/historico"><button>See Historic</button></Link>
+            </div>
           </div>
 
       </SCards>
@@ -109,7 +126,7 @@ justify-content: space-between;
 
 & img {
   width: 290px;
-  margin-top: -20px;
+  margin-top: -58px;
 }
 `;
 
@@ -151,46 +168,57 @@ justify-content: space-evenly;
 margin-top: 20px;
 
 & .card1 {
-  border: 1px solid white;
   border-radius: 10px;
-  padding: 15px;
   margin-left: 4px;
   color: #F5F5F5;
+  box-shadow: 10px 11px 18px black;
+  
   
   
   & h1 {
     font-family: "Montserrat";
     letter-spacing: -2px;
     font-style: italic;
-    width: 200px;
+    width: 230px;
+    font-size: 50px;
     text-align: center;
+    
   }
 
   & button {
     border: 1px solid #D9D9D9;
     border-radius: 20px;
     padding: 10px 25px;
-    margin-left: 34px;
-    margin-top: -10px;
     background-color: #D9D9D9;
     color:#5D5E5F;
     font-family: "Montserrat";
     font-style: oblique;
     cursor: pointer;
+    margin-left: 30px;
+    font-size: 20px;
+    
+  }
+
+  & .text1 {
+    position: absolute;
+    bottom: 92px;
+    //text-align:center;
+    margin-left: 30px;
   }
 }
 
 & .card2 {
-  border: 1px solid white;
   border-radius: 10px;
-  padding: 15px;
+  margin-left: 4px;
   color: #F5F5F5;
+  box-shadow: 10px 11px 18px black;
 
   & h1 {
     font-family: "Montserrat";
     letter-spacing: -2px;
     font-style: italic;
-    width: 200px;
+    width: 230px;
+    font-size: 50px;
     text-align: center;
   }
 
@@ -198,28 +226,34 @@ margin-top: 20px;
     border: 1px solid #D9D9D9;
     border-radius: 20px;
     padding: 10px 25px;
-    margin-left: 34px;
-    margin-top: -10px;
     background-color: #D9D9D9;
     color:#5D5E5F;
     font-family: "Montserrat";
     font-style: oblique;
     cursor: pointer;
+    margin-left: 30px;
+    font-size: 20px;
+  }
+  & .text2 {
+    position: absolute;
+    bottom: 92px;
+    //text-align:center;
+    margin-left: 30px;
   }
 }
 
 & .card3 {
-  border: 1px solid white;
   border-radius: 10px;
-  padding: 15px;
-  margin-right: 4px;
+  margin-left: 4px;
   color: #F5F5F5;
+  box-shadow: 10px 11px 18px black;
 
   & h1 {
     font-family: "Montserrat";
     letter-spacing: -2px;
     font-style: italic;
-    width: 200px;
+    width: 230px;
+    font-size: 50px;
     text-align: center;
   }
 
@@ -227,13 +261,28 @@ margin-top: 20px;
     border: 1px solid #D9D9D9;
     border-radius: 20px;
     padding: 10px 25px;
-    margin-left: 34px;
-    margin-top: -10px;
     background-color: #D9D9D9;
     color:#5D5E5F;
     font-family: "Montserrat";
     font-style: oblique;
     cursor: pointer;
+    margin-left: 30px;
+    font-size: 20px;
+  }
+  & .text3 {
+    position: absolute;
+    bottom: 92px;
+    //text-align:center;
+    margin-left: 30px;
   }
 }
+`;
+
+
+const SImg = styled.img`
+    width: 300px;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: -4px;
+
 `;
