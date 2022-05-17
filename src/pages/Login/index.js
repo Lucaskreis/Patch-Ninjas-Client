@@ -2,7 +2,11 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { api } from "../../api/api";
 import { useNavigate } from "react-router-dom";
-import "./index.css"
+import styled from "styled-components"
+import Patch from "../Assets/images/patch.png"
+import Frase from "../Assets/images/login.png"
+import Ninja from "../Assets/images/ninja.png"
+
 
 export function Login() {
   const [form, setForm] = useState({
@@ -35,36 +39,138 @@ export function Login() {
 
   return (
     <div>
-      <div>
 
-      </div>
-      <div className="loginSection">
+      <SHeader>
+        <img src={ Patch } alt="" />
+      </SHeader>
+
+      <SMiddleSection className="loginSection">
+
+        <img src={ Frase } alt="" />
+
+        <SLogin>
+          <img src={Ninja} alt="" />
+          <h1>LOGIN</h1>
         <form onSubmit={handleSumit} className="loginContainer">
           <div>
-          <label>Email:  </label>
             <input
               type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
               className="input"
+              placeholder="E-mail"
             />
           </div>
+
           <div>
-            <label>Senha:  </label>
             <input
               type="password"
               name="password"
               value={form.password}
               onChange={handleChange}
               className="input"
+              placeholder="Password"
             />
           </div>
+
           <div className="btnContainer">
-            <button type="submit" className="loginButton">Entrar!</button>
+            <button type="submit" className="loginButton">SIGN IN</button>
+            <h4>Forgot your password?</h4>
           </div>
         </form>
-      </div>
+        </SLogin>
+      </SMiddleSection>
     </div>
   );
 }
+
+export default Login;
+
+// =========================== STYLES ============================= // 
+
+const SHeader = styled.div`
+display: flex;
+justify-content: space-between;
+
+& img {
+  width: 200px;
+  margin-top: -58px;
+}
+`;
+
+const SMiddleSection = styled.div`
+display: flex;
+justify-content: space-around;
+text-align: center;
+margin-top: 10px;
+
+
+ & img {
+   width: 550px;
+   margin-top: -100px;
+ }
+
+ & input {
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+    padding: 10px 38px;
+    margin-top: 10px;
+    background-color: #D9D9D9;
+    color:#5D5E5F;
+    font-family: "Montserrat";
+    cursor: pointer;
+
+    ::placeholder {
+      color: #B1C1B4;
+      font-weight:bolder;
+    }
+ }
+
+ & button {
+    border: 1px solid #0246B7;
+    border-radius: 5px;
+    padding: 10px 87px;
+    margin-top: 10px;
+    background-color: #0246B7;
+    color: white;
+    font-family: "Montserrat";
+    //font-style: oblique;
+    cursor: pointer;
+ }
+`;
+
+const SLogin = styled.div`
+border: 1px solid white;
+border-radius: 15px;
+padding: 25px;
+background-color: white;
+height: 300px;
+
+
+& img {
+width: 250px;
+z-index: 1;
+margin-top: -159px;
+margin-bottom: -60px;
+margin-left: 15px;
+
+}
+
+& h1 {
+  color: #D9D9D9;
+  font-family: "Montserrat";
+  text-align: center;
+  font-style: italic;
+  font-weight:lighter;
+  margin-bottom: 10px;
+  
+}
+
+& h4 {
+  font-family: "Montserrat";
+  text-align: center;
+  color: #D9D9D9;
+}
+`
+
