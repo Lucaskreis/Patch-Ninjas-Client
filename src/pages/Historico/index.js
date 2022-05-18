@@ -1,4 +1,4 @@
-import {Link, useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom";
 import {api} from "../../api/api";
 import { useEffect, useState, useContext } from "react";
 import Patch from "../Assets/images/patch.png";
@@ -12,50 +12,40 @@ import Historic2 from "../Assets/images/historic2.png"
 export function Historico() {
 
     const [profile, setProfile] = useState([{}]);
-    
     const [messages, setMessages] = useState([]);
     console.log(messages);
     const [isLoad, setIsLoad] = useState(true);
-
-
-    const navigate = useNavigate();
-
-    
-
     const { loggedInUser } = useContext(AuthContext);
-    console.log(loggedInUser);
-
-    
+    //console.log(loggedInUser);
 
     useEffect (() => {
     
         async function fetchProfile() {
             const response = await api.get("/user/profile")
             setProfile({...response.data})
-            setIsLoad(false);
+            setIsLoad(false);   
         }
         fetchProfile()
     }, [])
-
+    
     useEffect (() => {
 
         async function fetchMessage() {
-            const response = await api.get("/messages/all-msg")
+            const response = await api.get("/messages/user-msg")
+            console.log(response)
             setMessages([...response.data])
-            console.log(response);
+            ;
         }
         fetchMessage();
     }, []);
 
-     const userMessages = messages.filter((e) => {
-        
-        return e.msg;
-
-    }).filter((elemento) => {
-        if (elemento.user === loggedInUser.user._id ) {
-            return elemento;
-        }
-    })
+    console.log(messages)
+     const userMessages = messages.map((elemento) => {
+        //console.log(elemento.msg.user)
+        //console.log(loggedInUser.user._id)
+       // if (elemento._id === loggedInUser.user._id ) {
+            return elemento.msg;
+        })
 
    console.log(userMessages);
 
@@ -77,42 +67,25 @@ export function Historico() {
                 <div className="card1">
                     <SImg src={Historic1} alt=""/>
                         <div className="text1">
-                            <h1>YOU SEARCHED</h1>
+                            <h1>YOU POSTED</h1>
                         </div>
                 </div>
-            
-
+  
                 {!isLoad &&
-            <>
-            {
-                        profile.jobs.map((currentProfile) => {
+                <>
+                    {profile.jobs.map((currentProfile) => {
 
-                            const {title, _id} = currentProfile;
+                        const {title, _id} = currentProfile;
                             return ( 
                                 <div>
+                                    <ul>
+                                        <Link to={`/Mensagem/${_id}`}> <li className="lista1">{title}</li></Link>
+                                    </ul> 
 
-                                <ul>
-                                <Link to={`/Mensagem/${_id}`}> <li className="lista1">{title}</li></Link>
-                                </ul> 
-
-                                <div>
-
-
-                                </div>
-
-                                {/* <div>
-                                    <h2>{local}</h2>
-                                    <h2>{prazo}</h2>
-                                </div> */}
-                                
-                                </div>
-                                
+                                </div>  
                             );
-                        })
-
-                    }
-
-                </>
+                        })}
+                    </>
                 }
             </SCard1> 
             
@@ -130,41 +103,14 @@ export function Historico() {
             <>
             {
                         userMessages.map((currentMessage) => {
-
                             const {title, _id} = currentMessage;
                             return ( 
 
                                 <div>
-
-                                
-                                <Link to={`/Mensagem/${_id}`}> <li className="lista2">{title}</li></Link>
-                                
-
-                            
-
-                                <div>
-
-
+                                    <Link to={`/Mensagem/${_id}`}> <li className="lista2">{title}</li></Link>
                                 </div>
-
-                                {/* <div>
-                                    <h2>{local}</h2>
-                                    <h2>{prazo}</h2>
-
-                                    <Link to={`/jobEdit/${_id}`}>Edit Job</Link>
-                                    <Link to={`/jobDelete/${_id}`}>Delete Job</Link>
-                                </div> 
-
-                                </div> */}
-                                
-                                </div>
-                                
-
                             );
-                        })
-
-                    }
-
+                        })}
                 </>
                 }
                 </ul>
@@ -175,8 +121,6 @@ export function Historico() {
         
         </>
      );
-
-
 
 }
 

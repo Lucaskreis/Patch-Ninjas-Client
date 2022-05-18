@@ -62,14 +62,23 @@ export function Trabalhos() {
           placeholder="Title"
         />
         
-        <input
+        {/*<input
           id="formTag"
           type="text"
           name="tags"
           value={form.tags}
           onChange={handleChange}
           placeholder="Service Type"
-        />
+        />*/}
+        <form>
+          <select name="tags" value={form.tags} onChange={handleChange}>
+          <option value="WD" selected>Web Develop</option>
+          <option value="UXUI">UX/UI</option>
+          <option value="DI">Data Analytics</option>
+          
+          </select>
+        </form>
+        
         
         <input
           id="formPrazo"
@@ -98,19 +107,19 @@ export function Trabalhos() {
             placeholder="Description"
             
           />
-        </div>   
+        </div> 
+          
         <div>
           <button type="submit">CONFIRM</button>
         </div>
       </form>
+    
 
       </SForms>
 
     </>
   );
-  
- 
-  
+
       
 }
 

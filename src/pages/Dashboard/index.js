@@ -34,7 +34,6 @@ export function Dashboard() {
        
     });
 
-    console.log(filteredVagas._id)
 
     return ( 
         <SContainer>
@@ -62,17 +61,15 @@ export function Dashboard() {
                             return ( 
                                 <>
 
-                                <SCard>
-                                    <div>
+                                <Link to={`/Mensagem/${_id}`}> <SCard>
+                                <div>
                                         <h1>{title}</h1>
+                                        <h3>{local}</h3>
+                                        <h4>{prazo}</h4>
+                                   
+                                       
                                     </div>
-                                    <div>
-                                        <Link to={`/Mensagem/${_id}`}><button className="button1">Leave a Question</button></Link>
-                                    </div>
-                                    <div>
-                                        <button className="button2"><a target="_blank" href="https://api.whatsapp.com/send?1=pt_BR&phone=5500000000000">WhatsApp</a></button>
-                                    </div>
-                                </SCard> 
+                                </SCard></Link>
 
                                 {/* <div>
                                     <h2>{local}</h2>
