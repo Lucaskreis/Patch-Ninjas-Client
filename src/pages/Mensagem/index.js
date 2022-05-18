@@ -11,18 +11,16 @@ export function Mensagem() {
 
     console.log(params.jobId)
     const {loggedInUser} = context
-    
-   
+    const [fav, setFav] = useState([]);
     const [texto, setTexto] = useState({
         msg: "",
         name: loggedInUser.user.name,
         jobs: params.jobId
-    })
+    });
+    const [allTexto, setAllTexto] = useState([]);
+    const [sent, setSent] = useState(false);
 
-    const [allTexto, setAllTexto] = useState([])
-    const [sent, setSent] = useState(false)
-
-    
+    console.log(allTexto)
     useEffect(() => {
         async function fetchAllTexto() {
             const response = await api.get("/messages/all-msg");
@@ -58,7 +56,7 @@ export function Mensagem() {
         setSent(false)
     },[sent])  
     
- 
+    console.log(texto)
    const msgfiltrada = allTexto.filter((elemento) => {
     if(elemento._id === params.jobId ){
        
@@ -74,6 +72,14 @@ export function Mensagem() {
    }).map((id) => {
        return (id._id)
    })
+   const msgOwner = msgfiltrada.map((element)=> {
+       console.log(element.msg)
+       return(element.msg)
+   }).map((elemento) => {
+       console.log(elemento.user)
+       return
+   })
+   console.log(msgOwner)
    console.log(jobOwner.toString())
    console.log(loggedInUser.user._id)
    function handleChange(e) {
@@ -90,6 +96,7 @@ export function Mensagem() {
     } catch (error) {
     console.log(error);
     }}
+
     const telefone = allTexto.filter((job) => {
         if(job._id === params.jobId ){
             return(job)
@@ -99,9 +106,6 @@ export function Mensagem() {
     const phone = telefone.map((item) => {
         return (item.user.phone)
     })
-    console.log(phone)
-    const link = `https://api.whatsapp.com/send?1=pt_BR&phone=55${phone.toString()}`
-    console.log(link)
 
     function deleteJob() {
         api.delete(`/jobs/delete-job/${params.jobId}`)
@@ -111,7 +115,20 @@ export function Mensagem() {
     function editJob(){
         navigate(`/jobEdit/${params.jobId}`)
     }
-    console.log(texto)
+
+    const jobId = params.jobId
+    async function favoritos(){
+       const response = await api.get("/user/profile");
+        console.log(response.data.isFav)
+       setFav([...response.data.isFav])
+        console.log(fav)
+       if(fav.includes(params.jobId)){
+           return 
+       }
+       await api.patch("/user/update-profile", {isFav: params.jobId} );
+       //funcionando, mas sempre substitui o item e não adiciona outro
+       console.log(fav)
+    }
     return (
         <div>
             <div>
@@ -125,6 +142,7 @@ export function Mensagem() {
                                 <h3>{item.prazo}</h3>
                                 <h3>{item.tags}</h3>
                                 <h3>{item.description}</h3>
+                                <button onClick={favoritos}>Favoritos</button>
                                 <button  className="button2"><a target="blank" href={`https://api.whatsapp.com/send?1=pt_BR&phone=55${phone.toString()}`}>WhatsApp</a></button>
                                 {jobOwner.toString() === loggedInUser.user._id ? (<div>
                                     <button  onClick={deleteJob}>Delete Job</button>
@@ -154,7 +172,7 @@ export function Mensagem() {
                         return( item.msg.map((element) => {
                             return(
                                 <>
-                                    <li>{element.name}: {element.msg}</li>
+                                    <li>{element.name}: {element.msg} </li>
                                 </>
                             )
                             
