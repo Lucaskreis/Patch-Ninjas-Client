@@ -166,4 +166,9 @@ export function Mensagem() {
             
         </div>
     )
-}
+};
+
+export default Mensagem;
+
+// =========================== STYLES ============================= // 
+
