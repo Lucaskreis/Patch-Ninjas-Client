@@ -66,7 +66,7 @@ export function Signup() {
               value={form.email}
               onChange={handleChange}
             />
-            <label htmlFor="formphone">Telefone:</label>
+            <label htmlFor="formphone">Telefone</label>
             <input
               id="formphone"
               name="phone"
@@ -74,14 +74,14 @@ export function Signup() {
               value={form.phone}
               onChange={handleChange}
             />
-            <label htmlFor="formaddress">Endereço:</label>
+            {/* <label htmlFor="formaddress">Endereço:</label>
             <input
               id="formaddress"
               name="address"
               type="text"
               value={form.address}
               onChange={handleChange}
-            />
+            /> */}
 
             <label htmlFor="formPassword">Password</label>
             <input
@@ -104,7 +104,7 @@ export function Signup() {
               <input type="checkbox" /><h5>Agree to terms and conditions</h5>
             </SCheck>
 
-            <Link to="/"><button type="submit">CREATE</button></Link>
+            <button type="submit">CREATE</button>
 
             <Link to="/"><h3>Already a user?</h3></Link>
 
@@ -192,8 +192,8 @@ border: 1px solid white;
 border-radius: 15px;
 padding: 35px;
 background-color: white;
-height: 390px;
-margin-top: -95px
+height: 450px;
+margin-top: -135px
 `;
 
 const SCheck = styled.div`

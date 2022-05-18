@@ -34,7 +34,6 @@ export function Dashboard() {
        
     });
 
-    const telefone = vagas
 
     return ( 
         <SContainer>
@@ -48,9 +47,9 @@ export function Dashboard() {
                     <h1>FIND A WORK</h1>
                 </div>
 
-                <div>
+                <SPhoto>
                     <img src={loggedInUser.user.img} alt=""></img>
-                </div>
+                </SPhoto>
             </SHeader>
 
 
@@ -139,16 +138,22 @@ const SCard = styled.div`
         margin-bottom: 7px;
     }
 
-    & .button2 {
+    & .button2  {
         border-radius: 15px;
         border: 1px solid #D9D9D9;
         padding: 1px 25px;
         background-color: #D9D9D9;
-        color:#5D5E5F;
+        
         font-family: "Montserrat";
         font-style: oblique;
         font-size: 20px;
         margin-bottom: 7px;
+        
+    }
+
+    & a {
+        text-decoration: none;
+        color:#253D71;
     }
 
 `;
@@ -175,3 +180,13 @@ justify-content: space-between;
     margin-top: 10px;
 }
 `;
+
+
+const SPhoto = styled.div`
+
+& img {
+    width: 150px;
+    margin-top: 10px;
+    margin-right: 35px;
+}
+`

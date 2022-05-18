@@ -1,4 +1,4 @@
-import {Link, useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom";
 import {api} from "../../api/api";
 import { useEffect, useState, useContext } from "react";
 import Patch from "../Assets/images/patch.png";
@@ -12,31 +12,42 @@ import Historic2 from "../Assets/images/historic2.png"
 export function Historico() {
 
     const [profile, setProfile] = useState([{}]);
-
+    const [messages, setMessages] = useState([]);
+    console.log(messages);
     const [isLoad, setIsLoad] = useState(true);
-
-
-    const navigate = useNavigate();
-
-    
-
     const { loggedInUser } = useContext(AuthContext);
-
-    
+    //console.log(loggedInUser);
 
     useEffect (() => {
     
         async function fetchProfile() {
             const response = await api.get("/user/profile")
             setProfile({...response.data})
-            setIsLoad(false);
+            setIsLoad(false);   
         }
         fetchProfile()
     }, [])
+    
+    useEffect (() => {
 
+        async function fetchMessage() {
+            const response = await api.get("/messages/user-msg")
+            console.log(response)
+            setMessages([...response.data])
+            ;
+        }
+        fetchMessage();
+    }, []);
 
+    console.log(messages)
+     const userMessages = messages.map((elemento) => {
+        //console.log(elemento.msg.user)
+        //console.log(loggedInUser.user._id)
+       // if (elemento._id === loggedInUser.user._id ) {
+            return elemento.msg;
+        })
 
-   console.log(profile)
+   console.log(userMessages);
 
     return ( 
         <>
@@ -44,7 +55,9 @@ export function Historico() {
         <SHeader>
             <Link to="/profile"><img src={ Patch } alt="" /></Link>
             <h1>YOUR HISTORIC</h1>
-            <img src={loggedInUser.user.img} alt="imagem de perfil"/>
+            <SPhoto>
+                <img src={loggedInUser.user.img} alt="imagem de perfil"/>
+            </SPhoto>
         </SHeader>
 
         <SContainer>
@@ -54,42 +67,25 @@ export function Historico() {
                 <div className="card1">
                     <SImg src={Historic1} alt=""/>
                         <div className="text1">
-                            <h1>FIND A WORKER</h1>
+                            <h1>YOU POSTED</h1>
                         </div>
                 </div>
-            
-
+  
                 {!isLoad &&
-            <>
-            {
-                        profile.jobs.map((currentProfile) => {
+                <>
+                    {profile.jobs.map((currentProfile) => {
 
-                            const {title, _id} = currentProfile;
+                        const {title, _id} = currentProfile;
                             return ( 
                                 <div>
+                                    <ul>
+                                        <Link to={`/Mensagem/${_id}`}> <li className="lista1">{title}</li></Link>
+                                    </ul> 
 
-                                <ul>
-                                <Link to={`/Mensagem/${_id}`}> <li className="lista1">{title}</li></Link>
-                                </ul> 
-
-                                <div>
-
-
-                                </div>
-
-                                {/* <div>
-                                    <h2>{local}</h2>
-                                    <h2>{prazo}</h2>
-                                </div> */}
-                                
-                                </div>
-                                
+                                </div>  
                             );
-                        })
-
-                    }
-
-                </>
+                        })}
+                    </>
                 }
             </SCard1> 
             
@@ -98,49 +94,26 @@ export function Historico() {
                 <div className="card2">
                     <SImg src={Historic2} alt=""/>
                         <div className="text2">
-                            <h1>FIND A WORK</h1>
+                            <h1>YOU ASKED</h1>
                         </div>
                 </div>
 
+                <ul>
                 {!isLoad &&
             <>
             {
-                        profile.jobs.map((currentProfile) => {
-
-                            const {title, _id} = currentProfile;
+                        userMessages.map((currentMessage) => {
+                            const {title, _id} = currentMessage;
                             return ( 
-                                <div>
-
-                                <ul>
-                                <Link to={`/Mensagem/${_id}`}> <li className="lista2">{title}</li></Link>
-                                </ul> 
 
                                 <div>
-
-
+                                    <Link to={`/Mensagem/${_id}`}> <li className="lista2">{title}</li></Link>
                                 </div>
-
-                                {/* <div>
-                                    <h2>{local}</h2>
-                                    <h2>{prazo}</h2>
-
-                                    <Link to={`/jobEdit/${_id}`}>Edit Job</Link>
-                                    <Link to={`/jobDelete/${_id}`}>Delete Job</Link>
-                                </div> 
-
-                                </div> */}
-                                
-                                </div>
-                                
-
                             );
-                        })
-
-                    }
-
+                        })}
                 </>
                 }
-
+                </ul>
 
             </SCard2>
 
@@ -148,8 +121,6 @@ export function Historico() {
         
         </>
      );
-
-
 
 }
 
@@ -185,6 +156,7 @@ const SContainer = styled.div`
 
 display: flex;
 justify-content: space-evenly;
+
 `;
 
 const SCard1 = styled.div`
@@ -192,6 +164,10 @@ display: flex;
 flex-direction: column;
 //justify-content: space-evenly;
 margin-top: 35px;
+
+& a{
+ text-decoration: none;
+}
 
 
 & .lista1 {
@@ -257,7 +233,7 @@ margin-top: 35px;
 
     & .text2 {
         position: absolute;
-        bottom: 200px;
+        bottom: 225px;
         //text-align:center;
         margin-left: 30px;
     }
@@ -271,3 +247,12 @@ const SImg = styled.img`
     margin-bottom: -4px;
 
 `;
+
+const SPhoto = styled.div`
+& img {
+    width: 150px;
+    margin-top: 10px;
+    margin-right: 35px;
+}
+
+`

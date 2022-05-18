@@ -97,7 +97,7 @@ export function UserEdit() {
             value={form.email}
             onChange={handleChange}
           />
-          <label htmlFor="formTelefone">Telefone:</label>
+          
           <input
             id="formTelefone"
             name="telefone"
@@ -106,7 +106,7 @@ export function UserEdit() {
             onChange={handleChange}
           />
 
-          <label htmlFor="formaddress">Endereço:</label>
+          
           <input
             id="formaddress"
             name="address"
@@ -170,7 +170,7 @@ const SInput = styled.div`
 & input {
   border: 1px solid #D9D9D9;
   border-radius: 5px;
-  padding: 10px 38px;
+  padding: 10px 25px;
   margin-top: 15px;
   background-color: #D9D9D9;
   color: #5D5E5F;
@@ -179,6 +179,7 @@ const SInput = styled.div`
   display: block;
   font-size: 180%;
   text-decoration: solid;
+  font-weight: 600;
 }
 
 & button {
@@ -192,13 +193,19 @@ const SInput = styled.div`
     //font-style: oblique;
     cursor: pointer;
     font-size: 130%;
+    font-weight: 600;
  }
 `;
 
 const SPhoto = styled.div`
 display:flex;
 flex-direction: column;
-border: 1px solid green;
+
+& img {
+  border-radius: 2000px;
+  width: 350px;
+  margin-top: -90px;
+}
 
 & button {
   border: 1px solid #0246B7;

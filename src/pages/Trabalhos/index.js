@@ -44,7 +44,9 @@ export function Trabalhos() {
     <SHeader>
       <Link to="/profile"><img src={ Patch } alt="" /></Link>
       <h1>FIND A WORKER</h1>
-      <img src={loggedInUser.user.img} alt="imagem de perfil"/>
+      <SPHoto>
+        <img src={loggedInUser.user.img} alt="imagem de perfil"/>
+      </SPHoto>
     </SHeader>
 
     <SForms>
@@ -60,16 +62,16 @@ export function Trabalhos() {
           placeholder="Title"
         />
         
-        <input
+        {/*<input
           id="formTag"
           type="text"
           name="tags"
           value={form.tags}
           onChange={handleChange}
           placeholder="Service Type"
-        />
+        />*/}
         <form>
-          <select name="tags">
+          <select name="tags" value={form.tags} onChange={handleChange}>
           <option value="WD" selected>Web Develop</option>
           <option value="UXUI">UX/UI</option>
           <option value="DI">Data Analytics</option>
@@ -149,6 +151,14 @@ justify-content: space-between;
 }
 `;
 
+const SPHoto = styled.div`
+& img {
+  width: 150px;
+  margin-top: 10px;
+  margin-right: 19px;
+}
+`
+
 const SForms = styled.div`
 
 text-align: center;
@@ -156,14 +166,15 @@ margin-top: -40px;
 
 & input {
 
-  border: 1px solid #D9D9D9;
+    border: 1px solid #D9D9D9;
     border-radius: 5px;
     padding: 10px 38px;
     margin-top: 10px;
     background-color: #D9D9D9;
-    color:#5D5E5F;
+    color: #B1C1B4;
     font-family: "Montserrat";
     margin-left: 5px;
+    font-weight: 900;
 
 
     ::placeholder {
@@ -198,12 +209,14 @@ border: 1px solid #D9D9D9;
     font-family: "Montserrat";
     margin-left: 5px;
     resize: none;
-    width: 65%;
+    width: 67%;
     height: 200px;
+    font-weight: 600;
 
     ::placeholder {
       color: #B1C1B4;
       font-weight:bolder;
       font-style: italic;
+      
     }
 `;
