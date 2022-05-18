@@ -15,6 +15,7 @@ export function Historico() {
 
     const [isLoad, setIsLoad] = useState(true);
 
+    const [idDelete, setIdDelete] = useState([]);
 
     const navigate = useNavigate();
 
@@ -34,9 +35,13 @@ export function Historico() {
         fetchProfile()
     }, [])
 
+    async function handleClick(id){
+        const response= await api.delete(`/jobs/delete-job/${id}`)
+        console.log(response);
+        setIdDelete([...response.data])
+    }
 
-
-   console.log(profile)
+   //console.log(profile)
 
     return ( 
         <>
@@ -113,6 +118,7 @@ export function Historico() {
 
                                 <ul>
                                 <Link to={`/Mensagem/${_id}`}> <li className="lista2">{title}</li></Link>
+                                <button onClick={()=> {handleClick(params._id)}} >Remove</button>
                                 </ul> 
 
                                 <div>
@@ -120,17 +126,18 @@ export function Historico() {
 
                                 </div>
 
-                                {/* <div>
-                                    <h2>{local}</h2>
-                                    <h2>{prazo}</h2>
+                                 <div>
+                                    
 
                                     <Link to={`/jobEdit/${_id}`}>Edit Job</Link>
+
                                     <Link to={`/jobDelete/${_id}`}>Delete Job</Link>
+
                                 </div> 
 
-                                </div> */}
+                                </div> 
                                 
-                                </div>
+                                
                                 
 
                             );
