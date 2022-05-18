@@ -26,7 +26,7 @@ export function Mensagem() {
     useEffect(() => {
         async function fetchAllTexto() {
             const response = await api.get("/messages/all-msg");
-            console.log(response.data);
+           
             setAllTexto([...response.data]);
            
            /* const spreadData = [...response.data];
@@ -69,6 +69,13 @@ export function Mensagem() {
         
    })
    console.log(msgfiltrada)
+   const jobOwner = msgfiltrada.map((element) => {
+       return (element.user)
+   }).map((id) => {
+       return (id._id)
+   })
+   console.log(jobOwner.toString())
+   console.log(loggedInUser.user._id)
    function handleChange(e) {
     setTexto({ ...texto, [e.target.name]: e.target.value });
     console.log(texto)
@@ -88,7 +95,7 @@ export function Mensagem() {
             return(job)
         }
     })
-    console.log(telefone) 
+   
     const phone = telefone.map((item) => {
         return (item.user.phone)
     })
@@ -104,7 +111,7 @@ export function Mensagem() {
     function editJob(){
         navigate(`/jobEdit/${params.jobId}`)
     }
-
+    console.log(texto)
     return (
         <div>
             <div>
@@ -118,11 +125,11 @@ export function Mensagem() {
                                 <h3>{item.prazo}</h3>
                                 <h3>{item.tags}</h3>
                                 <h3>{item.description}</h3>
-                                <button  className="button2"><a target="_blank" href="http://api.whatsapp.com/send?1=pt_BR&phone=550000000000">WhatsApp</a></button>
-                                <div>
-                                    <button className="show" onClick={deleteJob}>Delete Job</button>
+                                <button  className="button2"><a target="blank" href={`https://api.whatsapp.com/send?1=pt_BR&phone=55${phone.toString()}`}>WhatsApp</a></button>
+                                {jobOwner.toString() === loggedInUser.user._id ? (<div>
+                                    <button  onClick={deleteJob}>Delete Job</button>
                                     <button onClick={editJob}>Edit Job</button>
-                                </div>
+                                </div>) : null}
                             </div>
                         )     
                 })}

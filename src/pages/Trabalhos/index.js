@@ -70,15 +70,14 @@ export function Trabalhos() {
           onChange={handleChange}
           placeholder="Service Type"
         />*/}
-        <form>
+        
           <select name="tags" value={form.tags} onChange={handleChange}>
-          <option value="WD" selected>Web Develop</option>
-          <option value="UXUI">UX/UI</option>
-          <option value="DI">Data Analytics</option>
+          
+            <option value="WD" selected>Web Develop</option>
+            <option value="UXUI">UX/UI</option>
+            <option value="DI">Data Analytics</option>
           
           </select>
-        </form>
-        
         
         <input
           id="formPrazo"
