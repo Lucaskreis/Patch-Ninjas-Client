@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { api } from "../../api/api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Patch from "../Assets/images/patch.png";
 import styled from "styled-components"
 import { AuthContext } from "../../contexts/authContext";
@@ -8,6 +8,7 @@ import { AuthContext } from "../../contexts/authContext";
 
 export function UserEdit() {
   const navigate = useNavigate();
+  const {userEdit} = useParams();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -23,9 +24,12 @@ export function UserEdit() {
      async function fetchCadastro() {
          const response= await api.get("/user/profile");
          setForm(response.data)
+         setForm({...response.data})
+         
     
      }
      fetchCadastro();
+     console.log("componentDidUpdate");
  },[])
 
   function handleChange(e) {
@@ -55,8 +59,11 @@ export function UserEdit() {
     try {
       //const imgURL = await handleUpload();
       await api.patch("/user/update-profile", { ...form});
+     
 
       navigate("/profile");
+      
+
     } catch (error) {
       console.log(error);
     }
