@@ -58,26 +58,19 @@ export function Dashboard() {
                         filteredVagas.map((currentVagas) => {
 
                             const {title, local, prazo, _id} = currentVagas;
-                            return ( 
-                                <>
+                        return ( 
+                            <>
 
-                                <Link to={`/Mensagem/${_id}`}> <SCard>
-                                <div>
+                                <Link to={`/Mensagem/${_id}`}> 
+                                    <SCard>
                                         <h1>{title}</h1>
                                         <h3>{local}</h3>
                                         <h4>{prazo}</h4>
-                                   
-                                       
-                                    </div>
-                                </SCard></Link>
+                                    </SCard>
+                                </Link>
 
-                                {/* <div>
-                                    <h2>{local}</h2>
-                                    <h2>{prazo}</h2>
-                                </div> */}
-
-                                </>
-                            );
+                            </>
+                        );
                         })
 
                     }
@@ -97,10 +90,16 @@ export default Dashboard;
 const SContainer = styled.div`
 
 & .card {
-    display: flex ;
-    justify-content: space-evenly;
+    display: grid ;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    gap: 50px;
 }
 
+& a {
+        text-decoration: none;
+        color:#253D71;
+    }
 `
 
 const SCard = styled.div`
@@ -112,50 +111,34 @@ const SCard = styled.div`
     margin-top: 20px;
     height: 300px;
     width: 300px;
-    text-align: center;
-    align-items: center;
-
+    
     & h1 {
     font-family: "Montserrat";
     letter-spacing: -1px;
     font-style: italic;
-    width: 200px;
+    width: 290px;
     font-size: 30px;
     text-align: center;
-    margin-left: 50px;
-    margin-top: 70px;
+    padding-top: 75px;
     }
-
-    & .button1 {
-        border-radius: 15px;
-        border: 1px solid #D9D9D9;
-        padding: 1px 25px;
-        background-color: #D9D9D9;
-        color:#5D5E5F;
+    
+    & h3 {
         font-family: "Montserrat";
-        font-style: oblique;
+        letter-spacing: -1px;
+        font-style: italic;
+        width: 290px;
         font-size: 20px;
-        margin-bottom: 7px;
+        text-align: center;
     }
 
-    & .button2  {
-        border-radius: 15px;
-        border: 1px solid #D9D9D9;
-        padding: 1px 25px;
-        background-color: #D9D9D9;
-        
+    & h4 {
         font-family: "Montserrat";
-        font-style: oblique;
-        font-size: 20px;
-        margin-bottom: 7px;
-        
+        letter-spacing: 3px;
+        font-style: italic;
+        width: 290px;
+        font-size: 10px;
+        text-align: center;
     }
-
-    & a {
-        text-decoration: none;
-        color:#253D71;
-    }
-
 `;
 
 const SHeader = styled.div`
