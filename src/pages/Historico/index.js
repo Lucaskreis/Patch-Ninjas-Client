@@ -41,11 +41,11 @@ export function Historico() {
 
     console.log(messages)
      const userMessages = messages.map((elemento) => {
-        //console.log(elemento.msg.user)
-        //console.log(loggedInUser.user._id)
-       // if (elemento._id === loggedInUser.user._id ) {
+        console.log(elemento.msg.user)
+        console.log(loggedInUser.user._id)
+        if (elemento._id === loggedInUser.user._id ) {
             return elemento.msg;
-        })
+        }});
 
    console.log(userMessages);
 
