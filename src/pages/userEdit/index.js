@@ -29,7 +29,7 @@ export function UserEdit() {
     
      }
      fetchCadastro();
-     console.log("componentDidUpdate");
+     
  },[])
 
   function handleChange(e) {
