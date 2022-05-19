@@ -183,7 +183,7 @@ export function Mensagem() {
                                         <h1> {element.msg}  </h1>
                                     </SLeft>)
 
-                                    
+                                
 
 
                                     
@@ -372,16 +372,17 @@ background-color: #839FDD;
 `
 
 const SLeft = styled.div`
-border: 1px solid white;
+border: 1px solid whitesmoke;
 border-radius: 25px;
 margin-bottom: 10px;
 background-color: whitesmoke;
 line-height: 10px;
 text-align: left;
-width: fit-content;
-padding-left: 10px;
+//width: fit-content;
+padding-left: 20px;
 padding-right: 10px;
 padding-bottom: 5px;
+margin-right: 70%;
 
 
 
@@ -408,10 +409,12 @@ border: 1px solid #C8E6BA;
 border-radius: 25px;
 margin-bottom: 10px;
 background-color: #C8E6BA;
-line-height: 10px;
+line-height: 20px;
 text-align: right;
-width: fit-content;
+//width: fit-content;
+margin-left: 70%;
 padding: 8px;
+padding-right: 20px;
 
 
 
