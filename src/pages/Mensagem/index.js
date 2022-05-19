@@ -21,6 +21,7 @@ export function Mensagem() {
         jobs: params.jobId
     });
     
+
     const [allTexto, setAllTexto] = useState([])
     const [sent, setSent] = useState(false)
 
