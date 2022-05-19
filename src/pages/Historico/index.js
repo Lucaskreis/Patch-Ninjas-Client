@@ -12,8 +12,8 @@ import Historic2 from "../Assets/images/historic2.png"
 export function Historico() {
 
     const [profile, setProfile] = useState([{}]);
-    const [messages, setMessages] = useState([]);
-    console.log(messages);
+    const [favorites, setFav] = useState([]);
+    console.log(favorites);
     const [isLoad, setIsLoad] = useState(true);
     const { loggedInUser } = useContext(AuthContext);
     //console.log(loggedInUser);
@@ -30,24 +30,23 @@ export function Historico() {
     
     useEffect (() => {
 
-        async function fetchMessage() {
-            const response = await api.get("/messages/user-msg")
-            console.log(response)
-            setMessages([...response.data])
+        async function fetchFav() {
+            const response = await api.get("/user/profile")
+            console.log(response.data.isFav)
+            setFav([...response.data.isFav])
             ;
         }
-        fetchMessage();
+        fetchFav();
     }, []);
 
-    console.log(messages)
-     const userMessages = messages.map((elemento) => {
-        console.log(elemento.msg.user)
-        console.log(loggedInUser.user._id)
-        if (elemento._id === loggedInUser.user._id ) {
-            return elemento.msg;
+    console.log(favorites)
+    /* const userFavorites = favorites.map((elemento) => {
+        console.log(elemento)
+        if (elemento.isFav === false ) {
+            return elemento;
         }});
 
-   console.log(userMessages);
+   console.log(userFavorites);*/
 
     return ( 
         <>
@@ -94,24 +93,22 @@ export function Historico() {
                 <div className="card2">
                     <SImg src={Historic2} alt=""/>
                         <div className="text2">
-                            <h1>YOU ASKED</h1>
+                            <h1>YOUR FAVORITES</h1>
                         </div>
                 </div>
 
                 <ul>
                 {!isLoad &&
-            <>
-            {
-                        userMessages.map((currentMessage) => {
-                            const {title, _id} = currentMessage;
+                    <>
+                    {favorites.map((currentProfile) => {
+                            console.log(currentProfile)
                             return ( 
+                               <Link to={`/Mensagem/${currentProfile._id}`} ><h4>{currentProfile.title}</h4></Link>
 
-                                <div>
-                                    <Link to={`/Mensagem/${_id}`}> <li className="lista2">{title}</li></Link>
-                                </div>
+                                 
                             );
                         })}
-                </>
+                    </>
                 }
                 </ul>
 

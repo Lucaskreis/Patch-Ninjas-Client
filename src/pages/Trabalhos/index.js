@@ -23,7 +23,8 @@ export function Trabalhos() {
 
  
   function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    console.log(e.target.value)
+    setForm({ ...form, [e.target.name]: e.target.value, });
   }
 
 
@@ -62,14 +63,29 @@ export function Trabalhos() {
           placeholder="Title"
         />
         
-          <select name="tags" value={form.tags} onChange={handleChange}>
+
+        {/*<input
+          id="formTag"
+          type="text"
+          name="tags"
+          value={form.tags}
+          onChange={handleChange}
+          placeholder="Service Type"
+
+        />*/}
+
+
+        <select onClick={handleChange} name="tags">
+            <option  value="WD">Web Dev</option>
+            <option  value="UXUI">UXUI</option>
+            <option  value="DI">Data Science</option>
+        </select>
+       
+          {/*<select name="tags" value={form.tags} onChange={handleChange}></select>*/}
           
-            <option value="WD" selected>Web Dev</option>
-            <option value="UXUI">UX/UI</option>
-            <option value="DI">Data Analytics</option>
+
           
-          </select>
-        
+
         <input
           id="formPrazo"
           type="date"
