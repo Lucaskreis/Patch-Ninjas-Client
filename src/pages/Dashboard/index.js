@@ -4,8 +4,9 @@ import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import styled from "styled-components"
 import Logo from "../Assets/images/patch.png"
-
-
+import WD from "../Assets/images/card1.png"
+import UXUI from "../Assets/images/card2.png"
+import DI from "../Assets/images/card3.png"
 
 export function Dashboard() {
 
@@ -55,15 +56,20 @@ export function Dashboard() {
                     {
                         filteredVagas.map((currentVagas) => {
 
-                            const {title, local, prazo, _id} = currentVagas;
+                            const {title, local, prazo, _id, tags} = currentVagas;
                         return ( 
                             <>
 
                                 <Link to={`/Mensagem/${_id}`}> 
                                     <SCard>
-                                        <h1>{title}</h1>
-                                        <h3>{local}</h3>
-                                        <h4>{prazo}</h4>
+                                        { tags.includes("WD") ? <SImg src={WD} alt=""/> : null }
+                                        { tags.includes("UXUI") ? <SImg src={UXUI} alt=""/> : null }
+                                        { tags.includes("DI") ? <SImg src={DI} alt=""/> : null }
+                                        <div className="dashboard">
+                                            <h1>{title}</h1>
+                                            <h3>{local}</h3>
+                                            <h4>{prazo}</h4>
+                                        </div>
                                     </SCard>
                                 </Link>
 
@@ -137,6 +143,12 @@ const SCard = styled.div`
         font-size: 10px;
         text-align: center;
     }
+
+    & .dashboard {
+        position: absolute;
+        bottom: 98px;
+        margin-left: 5px;
+    }
 `;
 
 const SHeader = styled.div`
@@ -170,4 +182,12 @@ const SPhoto = styled.div`
     margin-top: 10px;
     margin-right: 35px;
 }
+`
+
+const SImg = styled.img`
+    width: 300px;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: -4px;
+
 `
