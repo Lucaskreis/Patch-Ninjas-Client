@@ -127,34 +127,36 @@ export function Mensagem() {
             </SHeader>
 
             <SContainer>
+
                 <div>
-                    <ul>
-                        {msgfiltrada.map((item) =>{
-                            console.log(item)
-                            return(
-                                <SCard>
-                                    <div className="title"><h1>{item.title}</h1></div>
+                    
+                    {msgfiltrada.map((item) =>{
+                        return(
+                            <SCard>
+                                <div className="title"><h1>{item.title}</h1></div>
                                     <div className="infos">
                                         <h3>Local: <span>{item.local}</span></h3>
                                         <h3>Terms: <span>{item.prazo}</span></h3>
                                         <h3>Type:  <span>{item.tags}</span></h3>
                                     </div>
-                                    <button  className="button2"><a target="blank" href={`https://api.whatsapp.com/send?1=pt_BR&phone=55${phone.toString()}`}> Go to WhatsApp</a></button>
+                                        <button  className="button2">
+                                            <a target="blank" href={`https://api.whatsapp.com/send?1=pt_BR&phone=55${phone.toString()}`}> Go to WhatsApp</a>
+                                        </button>
 
-                                    {jobOwner.toString() === loggedInUser.user._id ? 
-                                    (<div>
-                                        <button  onClick={deleteJob}>Delete Job</button>
-                                        <button onClick={editJob}>Edit Job</button>
-                                    </div>) : null}
-                                </SCard>
-                            )     
+                                        {jobOwner.toString() === loggedInUser.user._id ? 
+                                        (<div>
+                                            <button  onClick={deleteJob}>Delete Job</button>
+                                            <button onClick={editJob}>Edit Job</button>
+                                        </div>) : null}
+                            </SCard>
+                        )     
                     })}
                         
-                    </ul>
+
                 </div>
 
                 
-                <div>
+                <SChat>
                     
                     
                         {msgfiltrada.map((item) =>{
@@ -167,13 +169,15 @@ export function Mensagem() {
                                     
                                     loggedInUser.user._id === element.user ? 
                                     
-                                    (<SLeft>
-                                        <h1>{element.name}: {element.msg}</h1>
-                                    </SLeft>)
+                                    (<SRight>
+                                        <h3> {element.name} </h3>
+                                        <h1> {element.msg}  </h1>
+                                    </SRight>)
                                     : 
-                                    (<div>
-                                        {element.name}: {element.msg}
-                                    </div>)
+                                    (<SLeft>
+                                        <h3> {element.name} </h3>
+                                        <h1> {element.msg}  </h1>
+                                    </SLeft>)
 
                                     
 
@@ -198,7 +202,7 @@ export function Mensagem() {
                     </SButton>
                     </form>
 
-                </div>
+                </SChat>
             </SContainer>           
             
         </div>
@@ -212,6 +216,7 @@ export default Mensagem;
 const SContainer = styled.div`
 display:flex;
 justify-content: space-between;
+padding: 10px;
 
 & img {
     width: 35px;
@@ -227,7 +232,18 @@ justify-content: space-between;
 `
 
 const SButton = styled.div`
-display:flex;`
+display:flex;
+margin-top: 50px;
+
+& input {
+    border-radius: 10px;
+    width: 850px;
+    background-color: black;
+
+}
+
+
+`
 
 const SHeader = styled.div`
 display: flex;
@@ -303,10 +319,67 @@ background-color: #839FDD;
 `
 
 const SLeft = styled.div`
-background-color: red;
+border: 1px solid #839FDD;
+border-radius: 25px;
+margin-bottom: 10px;
+background-color: #82ccdd;
+line-height: 10px;
+text-align: left;
+width: fit-content;
+padding: 10px;
+float: inline-end;
+
+
+& h3 {
+    font-family: "Montserrat";
+    font-style: italic;
+    font-weight: 100;
+    color: black;
+    
+}
 
 & h1 {
     color: white;
+    
+    font-family: "Montserrat";
 }
+
+`
+
+const SRight = styled.div`
+border: 1px solid #839FDD;
+border-radius: 25px;
+margin-bottom: 10px;
+background-color: #78e08f;
+line-height: 10px;
+text-align: right;
+width: fit-content;
+padding: 10px;
+position: sticky;
+
+
+
+& h3 {
+    color: white;
+    font-family: "Montserrat";
+    font-style: italic;
+    font-weight: 100;
+    color: black;
+    
+}
+
+& h1 {
+    color: white;
+    font-family: "Montserrat";
+    font-size: 20px;
+}
+
+`
+
+const SChat = styled.div`
+border: 1px solid white;
+padding: 25px;
+width: 900px;
+height: auto;
 
 `
