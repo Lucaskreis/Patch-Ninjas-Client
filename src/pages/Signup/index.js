@@ -156,6 +156,7 @@ margin-left: 25px;
     font-family: "Montserrat";
     display: block;
     margin-bottom: 10px;
+    font-weight: 600;
  }
 
  & label {
@@ -179,10 +180,9 @@ margin-left: 25px;
 
  & h3 {
   font-family: "Montserrat";
-  color: #D9D9D9;
+  color: black;
   font-weight: 500;
   text-align: center;
-
  }
 
  `
@@ -193,7 +193,11 @@ border-radius: 15px;
 padding: 35px;
 background-color: white;
 height: 450px;
-margin-top: -135px
+margin-top: -135px;
+
+& a {
+  text-decoration: none;
+}
 `;
 
 const SCheck = styled.div`
@@ -208,5 +212,7 @@ display: flex;
   font-size: 10px;
 
 }
+
+
 
 `
