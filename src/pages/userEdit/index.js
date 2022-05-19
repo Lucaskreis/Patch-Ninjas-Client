@@ -15,7 +15,8 @@ export function UserEdit() {
     phone: "",
     address: ""
   });
-
+    const [userJobs, setUserJobs] = ([]);
+    const [userMsgs, setUserMsgs] = ([{}])
  // const [img, setImg] = useState("");
 
  const { loggedInUser } = useContext(AuthContext);
@@ -23,13 +24,17 @@ export function UserEdit() {
  useEffect(()=> {
      async function fetchCadastro() {
          const response= await api.get("/user/profile");
-         setForm(response.data)
+         //setForm(response.data)
          setForm({...response.data})
-         
-    
+         const responseJob= await api.get("/jobs/jobs")
+        setUserJobs(responseJob.data)
+         console.log(responseJob.data)
+        /* const responseMsg= await api.get("/messages/all-msg");
+         setUserMsgs({...responseMsg.data})
+         console.log(userMsgs)*/
      }
      fetchCadastro();
-     console.log("componentDidUpdate");
+     
  },[])
 
   function handleChange(e) {
@@ -68,9 +73,10 @@ export function UserEdit() {
       console.log(error);
     }
   }
+  console.log(form._id)
     function deleteUser() {
-      api.delete(`/user/delete-user}`)
-     // navigate("/");
+      api.delete("/user/delete-user",form._id)
+     navigate("/");
       return
   }
 
