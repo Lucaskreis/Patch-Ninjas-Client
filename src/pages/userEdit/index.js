@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { api } from "../../api/api";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Patch from "../Assets/images/patch.png";
 import styled from "styled-components"
 import { AuthContext } from "../../contexts/authContext";
@@ -8,15 +8,14 @@ import { AuthContext } from "../../contexts/authContext";
 
 export function UserEdit() {
   const navigate = useNavigate();
-  const {userEdit} = useParams();
+
   const [form, setForm] = useState({
     name: "",
     email: "",
-    phone: "",
-    address: ""
+    phone: ""
   });
-    const [userJobs, setUserJobs] = ([]);
-    const [userMsgs, setUserMsgs] = ([{}])
+  //  const [userJobs, setUserJobs] = ([]);
+  //  const [userMsgs, setUserMsgs] = ([{}])
  // const [img, setImg] = useState("");
 
  const { loggedInUser } = useContext(AuthContext);
@@ -26,9 +25,9 @@ export function UserEdit() {
          const response= await api.get("/user/profile");
          //setForm(response.data)
          setForm({...response.data})
-         const responseJob= await api.get("/jobs/jobs")
-        setUserJobs(responseJob.data)
-         console.log(responseJob.data)
+        // const responseJob= await api.get("/jobs/jobs")
+       // setUserJobs(responseJob.data)
+       //  console.log(responseJob.data)
         /* const responseMsg= await api.get("/messages/all-msg");
          setUserMsgs({...responseMsg.data})
          console.log(userMsgs)*/
@@ -73,7 +72,7 @@ export function UserEdit() {
       console.log(error);
     }
   }
-  console.log(form._id)
+  
     function deleteUser() {
       api.delete("/user/delete-user",form._id)
      navigate("/");
@@ -122,15 +121,6 @@ export function UserEdit() {
             placeholder="Phone"
           />
 
-          
-          <input
-            id="formaddress"
-            name="address"
-            type="text"
-            value={form.address}
-            onChange={handleChange}
-            placeholder="Address"
-          />
           <button type="submit">CONFIRM</button>
           <button onClick={deleteUser}>DELETE</button>
         </form>

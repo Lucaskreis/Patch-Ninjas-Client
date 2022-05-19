@@ -25,13 +25,11 @@ export function Dashboard() {
         fetchVagas()
     }, [])
 
+    
     const filteredVagas = vagas.filter((elemento) => {
-        
-
         if(elemento.user !== Context.loggedInUser.user._id) {
             return elemento;
-        }
-       
+        }  
     });
 
 

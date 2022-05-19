@@ -32,65 +32,30 @@ export function Mensagem() {
             const response = await api.get("/messages/all-msg");
            
             setAllTexto([...response.data]);
-           
-           /* const spreadData = [...response.data];
-            const filteredMsgsporJobs = spreadData.filter((element) => {
-                if(element._id === params.jobId){
-                    return(element)
-                }
-
-            });
-            console.log(filteredMsgsporJobs)
-
-            console.log(loggedInUser.user._id)
-            const filteredMsgsporUser = filteredMsgsporJobs.map((mapElement) => {
-            return (mapElement)}).filter((element) => {
-                console.log(element.msg)
-                console.log(element.msg.user)
-                console.log(loggedInUser.user._id)
-                console.log(filteredMsgsporJobs.user)
-                if(element.msg.user === loggedInUser.user._id || element.msg.user === filteredMsgsporJobs.user ){
-                console.log(element)
-                return (element)
-         } })
-            
-          
-            console.log(filteredMsgsporUser)*/
         }
         
         fetchAllTexto()
         setSent(false)
     },[sent])  
     
-    console.log(texto)
    const msgfiltrada = allTexto.filter((elemento) => {
     if(elemento._id === params.jobId ){
-       
-           //console.log(elemento)
-
+      
                return elemento;
          }
         
    })
-   //console.log(msgfiltrada)
+   
    const jobOwner = msgfiltrada.map((element) => {
        return (element.user)
    }).map((id) => {
        return (id._id)
    })
-   const msgOwner = msgfiltrada.map((element)=> {
-       console.log(element.msg)
-       return(element.msg)
-   }).map((elemento) => {
-       console.log(elemento.user)
-       return
-   })
-   console.log(msgOwner)
+ 
    console.log(jobOwner.toString())
    console.log(loggedInUser.user._id)
    function handleChange(e) {
     setTexto({ ...texto, [e.target.name]: e.target.value });
-    //console.log(texto)
   }
 
     async function handleSubmit(e) {
@@ -113,21 +78,17 @@ export function Mensagem() {
         return (item.user.phone)
     })
 
-    //console.log(phone)
-    const link = `https://api.whatsapp.com/send?1=pt_BR&phone=55${phone.toString()}`
-    //console.log(link)
-
 
     function deleteJob() {
         api.delete(`/jobs/delete-job/${params.jobId}`)
         navigate("/Profile");
         return
     }
+    
     function editJob(){
         navigate(`/jobEdit/${params.jobId}`)
     }
 
-    const jobId = params.jobId
     async function favoritos(){
        const response = await api.get("/user/profile");
         console.log(response.data.isFav)

@@ -16,7 +16,6 @@ export function Historico() {
     console.log(favorites);
     const [isLoad, setIsLoad] = useState(true);
     const { loggedInUser } = useContext(AuthContext);
-    //console.log(loggedInUser);
 
     useEffect (() => {
     
@@ -40,13 +39,7 @@ export function Historico() {
     }, []);
 
     console.log(favorites)
-    /* const userFavorites = favorites.map((elemento) => {
-        console.log(elemento)
-        if (elemento.isFav === false ) {
-            return elemento;
-        }});
 
-   console.log(userFavorites);*/
 
     return ( 
         <>
