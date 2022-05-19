@@ -13,8 +13,6 @@ export function JobEdit() {
     local:""
   });
 
- 
-
  // const [img, setImg] = useState("");
 
  useEffect(()=> {
@@ -26,7 +24,7 @@ export function JobEdit() {
     
      }
      fetchTrabalho();
- },[])
+ },[jobEdit])
 
   function handleChange(e) {
     console.log(e.target.value);
@@ -42,12 +40,12 @@ export function JobEdit() {
       
       await api.patch(`/jobs/update-job/${jobEdit}`, { ...form});
 
-      navigate("/createjob");
+      navigate("/historico");
     } catch (error) {
       console.log(error);
     }
   }
-      console.log(form)
+    
   return (
     <form onSubmit={handleSubmit}>
         <label htmlFor="formTitle">Título:</label>

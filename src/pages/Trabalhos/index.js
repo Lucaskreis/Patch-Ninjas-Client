@@ -64,16 +64,6 @@ export function Trabalhos() {
         />
         
 
-        {/*<input
-          id="formTag"
-          type="text"
-          name="tags"
-          value={form.tags}
-          onChange={handleChange}
-          placeholder="Service Type"
-
-        />*/}
-
 
         <select onClick={handleChange} name="tags">
             <option  value="WD">Web Dev</option>
@@ -81,11 +71,7 @@ export function Trabalhos() {
             <option  value="DI">Data Science</option>
         </select>
        
-          {/*<select name="tags" value={form.tags} onChange={handleChange}></select>*/}
-          
-
-          
-
+      
         <input
           id="formPrazo"
           type="date"
