@@ -1,5 +1,5 @@
-import { useEffect, useState, useContext } from "react";
-import { api } from "../../api/api";
+import { useContext } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 
@@ -14,19 +14,11 @@ import Card3 from "../Assets/images/card3.png"
 
 
 export function Profile() {
-  // const [user, setUser] = useState({ name: "", email: "" });
+  
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   async function fetchUser() {
-  //     const response = await api.get("/user/profile");
-  //     setUser(response.data);
-  //   }
-
-  //   fetchUser();
-  // }, []);
 
   const { loggedInUser } = useContext(AuthContext);
-  //const [selectedId, setSelectedId] = useState(null);
+  
 
 console.log(loggedInUser);
 
@@ -56,23 +48,6 @@ console.log(loggedInUser);
             <img className="photo" src={loggedInUser.user.img} alt="imagem de perfil"/> 
           </div>
         </SHeader>
-
-        {/* {items.map(item => (
-          <motion.div layoutId={item.id} onClick={() => setSelectedId(item.id)}>
-            <motion.h5>{item.subtitle}</motion.h5>
-            <motion.h2>{item.title}</motion.h2>
-          </motion.div>
-      ))};
-
-            <AnimatePresence>
-                {selectedId && (
-                  <motion.div layoutId={selectedId}>
-                  <motion.h5>{item.subtitle}</motion.h5>
-                  <motion.h2>{item.title}</motion.h2>
-                  <motion.button onClick={() => setSelectedId(null)} />
-                  </motion.div>
-                    )}
-            </AnimatePresence> */}
 
       <SCards>
         
