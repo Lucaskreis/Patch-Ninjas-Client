@@ -98,6 +98,7 @@ export function UserEdit() {
             type="text"
             value={form.name}
             onChange={handleChange}
+            placeholder="Your Name"
           />
               { /*<label htmlFor="formImg">Sua foto de perfil:</label>
                 <input value = {form.img} type="file" id="formImg" onChange={handleImage} /> */}
@@ -109,6 +110,7 @@ export function UserEdit() {
             type="email"
             value={form.email}
             onChange={handleChange}
+            placeholder="E-mail"
           />
           
           <input
@@ -117,6 +119,7 @@ export function UserEdit() {
             type="text"
             value={form.phone}
             onChange={handleChange}
+            placeholder="Phone"
           />
 
           
@@ -126,6 +129,7 @@ export function UserEdit() {
             type="text"
             value={form.address}
             onChange={handleChange}
+            placeholder="Address"
           />
           <button type="submit">CONFIRM</button>
           <button onClick={deleteUser}>DELETE</button>
@@ -179,7 +183,6 @@ justify-content: space-around;
 
 const SInput = styled.div`
 
-
 & input {
   border: 1px solid #D9D9D9;
   border-radius: 5px;
@@ -193,6 +196,10 @@ const SInput = styled.div`
   font-size: 180%;
   text-decoration: solid;
   font-weight: 600;
+
+  ::placeholder {
+    color: #B1C1B4;
+  }
 }
 
 & button {
@@ -207,6 +214,8 @@ const SInput = styled.div`
     cursor: pointer;
     font-size: 130%;
     font-weight: 600;
+    margin-left: 5px;
+    
  }
 `;
 

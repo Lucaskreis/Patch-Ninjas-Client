@@ -63,6 +63,7 @@ export function Trabalhos() {
           placeholder="Title"
         />
         
+
         {/*<input
           id="formTag"
           type="text"
@@ -82,6 +83,7 @@ export function Trabalhos() {
        
           {/*<select name="tags" value={form.tags} onChange={handleChange}></select>*/}
           
+
           
 
         <input
@@ -175,14 +177,14 @@ margin-top: -40px;
     padding: 10px 38px;
     margin-top: 10px;
     background-color: #D9D9D9;
-    color: #B1C1B4;
+    color: #5D5E5F;
     font-family: "Montserrat";
     margin-left: 5px;
     font-weight: 900;
 
 
     ::placeholder {
-      color: #B1C1B4;
+      color: #5D5E5F;
       font-weight:bolder;
       font-style: italic;
     }
@@ -201,6 +203,26 @@ margin-top: -40px;
     font-size: 25px;
     cursor: pointer;
 }
+
+& select {
+
+  border: 1px solid #D9D9D9;
+    border-radius: 5px;
+    padding: 10px 38px;
+    margin-top: 10px;
+    background-color: #D9D9D9;
+    color: #5D5E5F;
+    font-family: "Montserrat";
+    margin-left: 5px;
+    font-weight: 900;
+}
+
+& option {
+  font-weight: 900;
+  color: #5D5E5F;
+
+}
+
 `;
 
 const STextarea = styled.textarea`
@@ -218,7 +240,7 @@ border: 1px solid #D9D9D9;
     font-weight: 600;
 
     ::placeholder {
-      color: #B1C1B4;
+      color: #5D5E5F;
       font-weight:bolder;
       font-style: italic;
       

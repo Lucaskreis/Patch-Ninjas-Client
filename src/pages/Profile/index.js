@@ -143,7 +143,7 @@ text-align: center;
 
 
 & h1 {
-  font-size: 80px;
+  font-size: 70px;
   color: #F5F5F5;
   font-family: "Montserrat";
   text-transform: uppercase;
@@ -160,12 +160,13 @@ text-align: center;
     border-radius: 5px;
     padding: 1px 25px;
     margin-left: 4px;
-    margin-top: -60px;
+    margin-top: 10px;
     background-color: #D9D9D9;
     color:#5D5E5F;
     font-family: "Montserrat";
     font-style: oblique;
     cursor: pointer;
+    font-size: 20px;
     
 }
 `;

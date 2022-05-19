@@ -120,6 +120,7 @@ margin-top: 10px;
     background-color: #D9D9D9;
     color:#5D5E5F;
     font-family: "Montserrat";
+    font-weight: 600;
     
 
     ::placeholder {
@@ -187,6 +188,10 @@ margin-left: 15px;
   align-content: center;
   cursor: pointer;
   
+}
+
+& a {
+  text-decoration: none;
 }
 `
 

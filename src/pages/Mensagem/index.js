@@ -1,7 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { api } from "../../api/api";
 import { AuthContext } from "../../contexts/authContext";
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import Patch from "../Assets/images/patch.png";
+import Enviar from "../Assets/images/button.png"
+import styled from "styled-components"
 
 
 export function Mensagem() {
@@ -9,7 +12,7 @@ export function Mensagem() {
     const params = useParams();
     const navigate = useNavigate();
 
-    console.log(params.jobId)
+    //console.log(params.jobId)
     const {loggedInUser} = context
     const [fav, setFav] = useState([]);
     const [texto, setTexto] = useState({
@@ -20,7 +23,12 @@ export function Mensagem() {
     const [allTexto, setAllTexto] = useState([]);
     const [sent, setSent] = useState(false);
 
-    console.log(allTexto)
+
+    const [allTexto, setAllTexto] = useState([])
+    const [sent, setSent] = useState(false)
+
+
+   
     useEffect(() => {
         async function fetchAllTexto() {
             const response = await api.get("/messages/all-msg");
@@ -60,13 +68,13 @@ export function Mensagem() {
    const msgfiltrada = allTexto.filter((elemento) => {
     if(elemento._id === params.jobId ){
        
-           console.log(elemento)
+           //console.log(elemento)
 
                return elemento;
          }
         
    })
-   console.log(msgfiltrada)
+   //console.log(msgfiltrada)
    const jobOwner = msgfiltrada.map((element) => {
        return (element.user)
    }).map((id) => {
@@ -84,7 +92,7 @@ export function Mensagem() {
    console.log(loggedInUser.user._id)
    function handleChange(e) {
     setTexto({ ...texto, [e.target.name]: e.target.value });
-    console.log(texto)
+    //console.log(texto)
   }
 
     async function handleSubmit(e) {
@@ -106,6 +114,11 @@ export function Mensagem() {
     const phone = telefone.map((item) => {
         return (item.user.phone)
     })
+
+    //console.log(phone)
+    const link = `https://api.whatsapp.com/send?1=pt_BR&phone=55${phone.toString()}`
+    //console.log(link)
+
 
     function deleteJob() {
         api.delete(`/jobs/delete-job/${params.jobId}`)
@@ -129,59 +142,274 @@ export function Mensagem() {
        //funcionando, mas sempre substitui o item e não adiciona outro
        console.log(fav)
     }
+
     return (
         <div>
-            <div>
-                <ul>
+            <SHeader>
+                <Link to="/profile"><img src={ Patch } alt="" /></Link>
+                <h1>MESSAGES</h1>
+            </SHeader>
+
+            <SContainer>
+
+                <div>
+                    
                     {msgfiltrada.map((item) =>{
-                        console.log(item)
                         return(
-                            <div>
-                                <h1>{item.title}</h1>
-                                <h3>{item.local}</h3>
-                                <h3>{item.prazo}</h3>
-                                <h3>{item.tags}</h3>
+
+                            <SCard>
+                                <div className="title"><h1>{item.title}</h1></div>
+                                    <div className="infos">
+                                        <h3>Local: <span>{item.local}</span></h3>
+                                        <h3>Terms: <span>{item.prazo}</span></h3>
+                                        <h3>Type:  <span>{item.tags}</span></h3>
+                                    </div>
                                 <h3>{item.description}</h3>
                                 <button onClick={favoritos}>Favoritos</button>
-                                <button  className="button2"><a target="blank" href={`https://api.whatsapp.com/send?1=pt_BR&phone=55${phone.toString()}`}>WhatsApp</a></button>
-                                {jobOwner.toString() === loggedInUser.user._id ? (<div>
-                                    <button  onClick={deleteJob}>Delete Job</button>
-                                    <button onClick={editJob}>Edit Job</button>
-                                </div>) : null}
-                            </div>
+                                        <button  className="button2">
+                                            <a target="blank" href={`https://api.whatsapp.com/send?1=pt_BR&phone=55${phone.toString()}`}> Go to WhatsApp</a>
+                                        </button>
+
+                                        {jobOwner.toString() === loggedInUser.user._id ? 
+                                        (<div>
+                                            <button  onClick={deleteJob}>Delete Job</button>
+                                            <button onClick={editJob}>Edit Job</button>
+                                        </div>) : null}
+                            </SCard>
+
                         )     
-                })}
+                    })}
+                        
+
+                </div>
+
+                
+                <SChat>
                     
-                </ul>
-            </div>
 
-            <h1>Mensagens</h1>
-            <form onSubmit={handleSubmit}>
-            <input
-                name="msg"
-                type="text"
-                value={texto.msg}
-                onChange={handleChange}
-            />
-            <button type="submit" >Enviar</button>
-            </form>
-            <div>
-                <ul>
-                    {msgfiltrada.map((item) =>{
-                        console.log(item)
-                        return( item.msg.map((element) => {
-                            return(
-                                <>
-                                    <li>{element.name}: {element.msg} </li>
-                                </>
-                            )
+                    
+                        {msgfiltrada.map((item) =>{
+                            console.log(item)
+
                             
-                        }))
-                })}   
-                </ul>
-            </div>
+                            return( item.msg.map((element) => {
+                                console.log(element)
+                                return(
+                                    
+                                    
+                                    loggedInUser.user._id === element.user ? 
+                                    
+                                    (<SRight>
+                                        <h3> {element.name} </h3>
+                                        <h1> {element.msg}  </h1>
+                                    </SRight>)
+                                    : 
+                                    (<SLeft>
+                                        <h3> {element.name} </h3>
+                                        <h1> {element.msg}  </h1>
+                                    </SLeft>)
 
+                                    
+
+
+                                    
+                                )
+                                
+                            }))
+                    })}   
+                    
+
+                    <form onSubmit={handleSubmit}>
+                    
+                    <SButton>
+                    <input
+                        name="msg"
+                        type="text"
+                        value={texto.msg}
+                        onChange={handleChange}
+                    />
+                        <button type="submit"><img src={Enviar} alt=""/></button>
+                    </SButton>
+                    </form>
+
+                </SChat>
+            </SContainer>           
             
         </div>
     )
+};
+
+export default Mensagem;
+
+// =========================== STYLES ============================= // 
+
+const SContainer = styled.div`
+display:flex;
+justify-content: space-between;
+padding: 10px;
+
+& img {
+    width: 35px;
+    
 }
+
+& button {
+    background-color: transparent;
+    border-radius: 300px;
+    border: 1px solid #253D71;
+    cursor: pointer;
+}
+`
+
+const SButton = styled.div`
+display:flex;
+margin-top: 50px;
+
+& input {
+    border-radius: 10px;
+    width: 850px;
+    background-color: black;
+
+}
+
+
+`
+
+const SHeader = styled.div`
+display: flex;
+gap: 150px;
+//justify-content: space-around;
+
+& img {
+  width: 290px;
+  margin-top: -58px;
+}
+
+& h1 {
+  font-size: 60px;
+  color: #F5F5F5;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: -3px;
+  margin-bottom: -5px;
+  align-items: center;
+  margin-top: 10px;
+  text-align:center;
+}
+`;
+
+
+const SCard = styled.div`
+border: 1px solid #839FDD;
+border-radius: 15px;
+padding: 10px;
+width: 300px;
+background-color: #839FDD;
+
+& .title {
+    margin-top: -20px;
+    font-family: "Montserrat";
+    color: white;
+    font-size: 12px
+}
+
+& .infos {
+    line-height: 5px;
+    font-family: "Montserrat";
+    color: white;
+    
+    & h3 {
+        font-size: 12px
+    }
+
+    & span {
+    font-weight: 200;
+    font-size: 12px
+}}
+
+& button {
+
+    border: 1px solid #0246B7;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-top: 20px;
+    background-color: #0246B7;
+    font-family: "Montserrat";
+    font-style: oblique;
+    font-size: 15px;
+    cursor: pointer;
+    
+}
+
+& a {
+    text-decoration: none;
+    color: white;
+}
+`
+
+const SLeft = styled.div`
+border: 1px solid #839FDD;
+border-radius: 25px;
+margin-bottom: 10px;
+background-color: #82ccdd;
+line-height: 10px;
+text-align: left;
+width: fit-content;
+padding: 10px;
+float: inline-end;
+
+
+& h3 {
+    font-family: "Montserrat";
+    font-style: italic;
+    font-weight: 100;
+    color: black;
+    
+}
+
+& h1 {
+    color: white;
+    
+    font-family: "Montserrat";
+}
+
+`
+
+const SRight = styled.div`
+border: 1px solid #839FDD;
+border-radius: 25px;
+margin-bottom: 10px;
+background-color: #78e08f;
+line-height: 10px;
+text-align: right;
+width: fit-content;
+padding: 10px;
+position: sticky;
+
+
+
+& h3 {
+    color: white;
+    font-family: "Montserrat";
+    font-style: italic;
+    font-weight: 100;
+    color: black;
+    
+}
+
+& h1 {
+    color: white;
+    font-family: "Montserrat";
+    font-size: 20px;
+}
+
+`
+
+const SChat = styled.div`
+border: 1px solid white;
+padding: 25px;
+width: 900px;
+height: auto;
+
+`
