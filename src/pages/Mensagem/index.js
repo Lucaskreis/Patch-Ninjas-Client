@@ -157,8 +157,9 @@ export function Mensagem() {
 
                 
                 <SChat>
-                    
-                    
+
+                    <div>
+
                         {msgfiltrada.map((item) =>{
                             console.log(item)
                             
@@ -170,7 +171,7 @@ export function Mensagem() {
                                     loggedInUser.user._id === element.user ? 
                                     
                                     (<SRight>
-                                        <h3> {element.name} </h3>
+                                        {/* <h3> {element.name} </h3> */}
                                         <h1> {element.msg}  </h1>
                                     </SRight>)
                                     : 
@@ -188,6 +189,7 @@ export function Mensagem() {
                             }))
                     })}   
                     
+                    </div>
 
                     <form onSubmit={handleSubmit}>
                     
@@ -197,6 +199,7 @@ export function Mensagem() {
                         type="text"
                         value={texto.msg}
                         onChange={handleChange}
+                        placeholder="Type your message.."
                     />
                         <button type="submit"><img src={Enviar} alt=""/></button>
                     </SButton>
@@ -217,6 +220,7 @@ const SContainer = styled.div`
 display:flex;
 justify-content: space-between;
 padding: 10px;
+margin-top: -50px;
 
 & img {
     width: 35px;
@@ -226,7 +230,7 @@ padding: 10px;
 & button {
     background-color: transparent;
     border-radius: 300px;
-    border: 1px solid #253D71;
+    border: 1px solid transparent;
     cursor: pointer;
 }
 `
@@ -235,10 +239,22 @@ const SButton = styled.div`
 display:flex;
 margin-top: 50px;
 
+& img {
+    width: 50px;
+}
+
 & input {
-    border-radius: 10px;
+    border-radius: 20px;
     width: 850px;
-    background-color: black;
+    background-color: white;
+    border: 1px solid white;
+    padding: 10px;
+    height: 30px;
+
+    ::placeholder {
+        font-size: 19px;
+        font-style: italic;
+    }
 
 }
 
@@ -247,7 +263,7 @@ margin-top: 50px;
 
 const SHeader = styled.div`
 display: flex;
-gap: 150px;
+gap: 260px;
 //justify-content: space-around;
 
 & img {
@@ -264,7 +280,7 @@ gap: 150px;
   letter-spacing: -3px;
   margin-bottom: -5px;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 50px;
   text-align:center;
 }
 `;
@@ -275,6 +291,7 @@ border: 1px solid #839FDD;
 border-radius: 15px;
 padding: 10px;
 width: 300px;
+height: 470px;
 background-color: #839FDD;
 
 & .title {
@@ -309,6 +326,8 @@ background-color: #839FDD;
     font-style: oblique;
     font-size: 15px;
     cursor: pointer;
+    color: white;
+    margin-left: 5px;
     
 }
 
@@ -319,67 +338,72 @@ background-color: #839FDD;
 `
 
 const SLeft = styled.div`
-border: 1px solid #839FDD;
+border: 1px solid white;
 border-radius: 25px;
 margin-bottom: 10px;
-background-color: #82ccdd;
+background-color: whitesmoke;
 line-height: 10px;
 text-align: left;
 width: fit-content;
-padding: 10px;
-float: inline-end;
+padding-left: 10px;
+padding-right: 10px;
+padding-bottom: 5px;
+
 
 
 & h3 {
-    font-family: "Montserrat";
+    font-family: 'Montserrat';
     font-style: italic;
-    font-weight: 100;
-    color: black;
+    font-weight: 600;
+    color: #FF5757;
+    
     
 }
 
 & h1 {
-    color: white;
-    
+    color: black;
     font-family: "Montserrat";
+    font-size: 15px;
+    margin-top: -5px;
 }
 
 `
 
 const SRight = styled.div`
-border: 1px solid #839FDD;
+border: 1px solid #C8E6BA;
 border-radius: 25px;
 margin-bottom: 10px;
-background-color: #78e08f;
+background-color: #C8E6BA;
 line-height: 10px;
 text-align: right;
 width: fit-content;
-padding: 10px;
-position: sticky;
+padding: 8px;
 
 
 
 & h3 {
-    color: white;
-    font-family: "Montserrat";
+    
+    font-family: 'Montserrat';
     font-style: italic;
-    font-weight: 100;
+    font-weight: 600;
     color: black;
+    text-transform: uppercase;
     
 }
 
 & h1 {
-    color: white;
-    font-family: "Montserrat";
-    font-size: 20px;
+    color: black;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    margin-top: 5px;
+    
 }
 
-`
+`;
 
 const SChat = styled.div`
-border: 1px solid white;
+border-radius: 20px;
 padding: 25px;
-width: 900px;
+width: auto;
 height: auto;
-
-`
+background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");`

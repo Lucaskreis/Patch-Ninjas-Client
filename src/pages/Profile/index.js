@@ -76,7 +76,8 @@ console.log(loggedInUser);
 
       <SCards>
         
-      <Link to="/createjob">  <div className="card1">
+      <Link to="/createjob">  
+      <div className="card1">
           <SImg src={Card1} alt=""/>
            <div className="text1">
               <h1>FIND A WORKER</h1>
