@@ -4,8 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import Patch from "../Assets/images/patch.png";
 import { AuthContext } from "../../contexts/authContext";
 import styled from "styled-components"
-import Historic1 from "../Assets/images/historic1.png"
-import Historic2 from "../Assets/images/historic2.png"
+
 
 
 
@@ -55,11 +54,8 @@ export function Historico() {
              
             <SCard1>
                 
-                <div className="card1">
-                    <SImg src={Historic1} alt=""/>
-                        <div className="text1">
-                            <h1>YOU POSTED</h1>
-                        </div>
+                <div>
+                    <h1>YOU POSTED</h1>
                 </div>
   
                 {!isLoad &&
@@ -69,10 +65,7 @@ export function Historico() {
                         const {title, _id} = currentProfile;
                             return ( 
                                 <div>
-                                    <ul>
-                                        <Link to={`/Mensagem/${_id}`}> <li className="lista1">{title}</li></Link>
-                                    </ul> 
-
+                                    <Link to={`/Mensagem/${_id}`}> <h4>{title}</h4></Link>
                                 </div>  
                             );
                         })}
@@ -82,11 +75,8 @@ export function Historico() {
             
             <SCard2>
 
-                <div className="card2">
-                    <SImg src={Historic2} alt=""/>
-                        <div className="text2">
-                            <h1>YOUR FAVORITES</h1>
-                        </div>
+                <div>
+                    <h1>YOUR FAVORITES</h1>
                 </div>
 
                 <ul>
@@ -144,107 +134,80 @@ justify-content: space-between;
 const SContainer = styled.div`
 
 display: flex;
-justify-content: space-evenly;
+justify-content: center;
+gap: 50px;
 
 `;
 
 const SCard1 = styled.div`
 display: flex;
 flex-direction: column;
-//justify-content: space-evenly;
 margin-top: 35px;
+width: auto;
+height: auto;
+padding: 10px;
+border-radius: 15px;
+box-shadow: 5px 5px 10px black;
+background: linear-gradient(180deg, #fdcd3b 50%, #ffed4b 60%);
+
+& h1 {
+font-family: "Montserrat";
+color: white;
+text-shadow: 2px 2px 12px black;
+font-style: italic;
+font-size: 40px;
+text-align: center;
+
+
+
+}
 
 & a{
  text-decoration: none;
 }
 
+& h4 {
+        color : black;
+        font-family: "Montserrat";
+        font-weight: 600;
+        text-align: center;
+        font-style: italic;
+    }
 
-& .lista1 {
-    margin-top: 10px;
-    list-style-type: none;
-    color: white;
-    text-decoration: none;
-    font-family: "Montserrat";
-}
-
-& .card1 {
-  border-radius: 10px;
-  margin-left: 4px;
-  color: #F5F5F5;
-  box-shadow: 10px 11px 18px black;
-  
-  & h1 {
-    font-family: "Montserrat";
-    letter-spacing: -2px;
-    font-style: italic;
-    width: 240px;
-    font-size: 40px;
-    text-align: center; 
-  }
-
-  & .text1 {
-    position: absolute;
-    bottom: 200px;
-    //text-align:center;
-    margin-left: 30px;
-  }
-}`;
+`;
 
 const SCard2 = styled.div`
 display: flex;
 flex-direction: column;
-//justify-content: space-evenly;
 margin-top: 35px;
+width: auto;
+height: auto;
+padding: 10px;
+border-radius: 15px;
+box-shadow: 5px 5px 10px black;
+background: linear-gradient(180deg, #fdcd3b 50%, #ffed4b 60%);
+
+& h1 {
+    margin-bottom: 3px;
+    font-family: "Montserrat";
+    color: white;
+    text-shadow: 2px 2px 12px black;
+    font-size: 40px;
+    font-style: italic;
+}
 
 & a { 
     text-decoration: none;
 }
 
 & h4 {
-        color : white;
-        font-family: "Montserrat";
-        font-weight: 100;
-    }
-
-
-& .lista2 {
-    margin-top: 10px;
-    list-style-type: none;
-    color: white;
-    text-decoration: none;
+    color : black;
     font-family: "Montserrat";
-}
-
-    & .card2 {
-    border-radius: 10px;
-    margin-left: 4px;
-    color: #F5F5F5;
-    box-shadow: 10px 11px 18px black;
-    
-    & h1 {
-        font-family: "Montserrat";
-        letter-spacing: -2px;
-        font-style: italic;
-        width: 240px;
-        font-size: 40px;
-        text-align: center;
-        
+    font-weight: 600;
+    text-align: center;
+    font-style: italic;
+    margin-right: 28px;
     }
-
-    & .text2 {
-        position: absolute;
-        bottom: 200px;
-        //text-align:center;
-        margin-left: 30px;
-    }
-    }`;
-
-const SImg = styled.img`
-    width: 300px;
-    height: 120px;
-    border-radius: 10px;
-    position: relative;
-    margin-bottom: -4px;
 
 `;
 
