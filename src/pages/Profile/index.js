@@ -59,7 +59,8 @@ console.log(loggedInUser);
               <button>Ask a Work</button>
             </div>
             
-          </div></Link>
+      </div>
+      </Link>
 
           <div className="card2">
             <SImg src={Card2} alt=""/>

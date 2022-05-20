@@ -5,6 +5,11 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import Patch from "../Assets/images/patch.png";
 import Enviar from "../Assets/images/button.png"
 import styled from "styled-components"
+import WD from "../Assets/images/card1.png"
+import UXUI from "../Assets/images/card2.png"
+import DI from "../Assets/images/card3.png"
+import Fav from "../Assets/images/favicon.png"
+
 
 
 export function Mensagem() {
@@ -52,8 +57,7 @@ export function Mensagem() {
        return (id._id)
    })
  
-   console.log(jobOwner.toString())
-   console.log(loggedInUser.user._id)
+  
    function handleChange(e) {
     setTexto({ ...texto, [e.target.name]: e.target.value });
   }
@@ -126,20 +130,31 @@ export function Mensagem() {
                         return(
 
                             <SCard>
+                                { item.tags.includes("WD") ? <img src={WD} alt=""/> : null }
+                                { item.tags.includes("UXUI") ? <img  src={UXUI} alt=""/> : null }
+                                { item.tags.includes("DI") ? <img  src={DI} alt=""/> : null }
+
                                 <div className="title"><h1>{item.title}</h1></div>
-                                    <div className="infos">
-                                        <h3>Local: <span>{item.local}</span></h3>
-                                        <h3>Terms: <span>{item.prazo}</span></h3>
-                                        <h3>Type:  <span>{item.tags}</span></h3>
-                                    </div>
-                                <h3>{item.description}</h3>
-                                <button onClick={favoritos}>Like</button>{/*ternaario*/}
-                                        <button  className="button2">
-                                            <a target="blank" href={`https://api.whatsapp.com/send?1=pt_BR&phone=55${phone.toString()}`}> Go to WhatsApp</a>
+                                        <div className="infos">
+                                            <h3>Local: <span>{item.local}</span></h3>
+                                            <h3>Terms: <span>{item.prazo}</span></h3>
+                                            <h3>Type:  <span>{item.tags}</span></h3>
+                                        </div>
+                                    <h3>Description: <span>{item.description}</span></h3>
+
+                                    <SFavBtn>
+                                        <button className="favBtn" onClick={favoritos}>
+                                            <img className="favicon" src={Fav}/>
                                         </button>
+                                        <div className="button2">
+                                            <button>
+                                                <a target="blank" href={`https://api.whatsapp.com/send?1=pt_BR&phone=55${phone.toString()}`}> Go to WhatsApp</a>
+                                         </button>
+                                        </div>
+                                    </SFavBtn>
 
                                         {jobOwner.toString() === loggedInUser.user._id ? 
-                                        (<div>
+                                        (<div className="ownerBtn">
                                             <button  onClick={deleteJob}>Delete Job</button>
                                             <button onClick={editJob}>Edit Job</button>
                                         </div>) : null}
@@ -176,7 +191,7 @@ export function Mensagem() {
                                         <h1> {element.msg}  </h1>
                                     </SLeft>)
 
-                                    
+                                
 
 
                                     
@@ -233,7 +248,7 @@ margin-top: -50px;
 
 const SButton = styled.div`
 display:flex;
-margin-top: 50px;
+margin-top: 440px;
 
 & img {
     width: 50px;
@@ -287,28 +302,59 @@ border: 1px solid #839FDD;
 border-radius: 15px;
 padding: 10px;
 width: 300px;
-height: 470px;
+height: auto;
 background-color: #839FDD;
+
+& .ownerBtn{
+    margin-left:50px;
+}
+
+& h3 {
+    font-size: 20px;
+    font-family: "Montserrat";
+    color: white;
+    text-align: center;
+    }
+
+    & span {
+    font-weight: 200;
+    font-size: 15px;
+    font-family: "Montserrat";
+}
+
+& img {
+    border-radius: 90px;
+    width: 180px;
+    margin-left: 60px;
+    border: 2px solid black;
+    box-shadow: 5px 5px 15px black;
+}
+
 
 & .title {
     margin-top: -20px;
     font-family: "Montserrat";
     color: white;
-    font-size: 12px
+    font-size: 20px;
+    text-align: center;
+    line-height: 35px;
+
 }
 
 & .infos {
     line-height: 5px;
     font-family: "Montserrat";
     color: white;
+    text-align: center;
+    
     
     & h3 {
-        font-size: 12px
+        font-size: 20px
     }
 
     & span {
     font-weight: 200;
-    font-size: 12px
+    font-size: 15px
 }}
 
 & button {
@@ -334,16 +380,17 @@ background-color: #839FDD;
 `
 
 const SLeft = styled.div`
-border: 1px solid white;
+border: 1px solid whitesmoke;
 border-radius: 25px;
 margin-bottom: 10px;
 background-color: whitesmoke;
 line-height: 10px;
 text-align: left;
-width: fit-content;
-padding-left: 10px;
+//width: fit-content;
+padding-left: 20px;
 padding-right: 10px;
 padding-bottom: 5px;
+margin-right: 70%;
 
 
 
@@ -370,10 +417,12 @@ border: 1px solid #C8E6BA;
 border-radius: 25px;
 margin-bottom: 10px;
 background-color: #C8E6BA;
-line-height: 10px;
+line-height: 20px;
 text-align: right;
-width: fit-content;
+//width: fit-content;
+margin-left: 70%;
 padding: 8px;
+padding-right: 20px;
 
 
 
@@ -403,3 +452,30 @@ padding: 25px;
 width: auto;
 height: auto;
 background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");`
+
+
+
+
+const SFavBtn = styled.div`
+display: flex;
+margin-left: -28px ;
+
+& .favicon {
+    width: 40px;
+    border: none;
+    box-shadow: none;
+    margin-top: -30px
+    
+}
+
+& .favBtn {
+    background-color: transparent;
+    border: none;
+    margin-top: 35px;
+}
+
+& .button2 {
+    margin-top: -1px;
+}
+
+`
