@@ -197,6 +197,16 @@ flex-direction: column;
 //justify-content: space-evenly;
 margin-top: 35px;
 
+& a { 
+    text-decoration: none;
+}
+
+& h4 {
+        color : white;
+        font-family: "Montserrat";
+        font-weight: 100;
+    }
+
 
 & .lista2 {
     margin-top: 10px;
@@ -218,12 +228,13 @@ margin-top: 35px;
         font-style: italic;
         width: 240px;
         font-size: 40px;
-        text-align: center; 
+        text-align: center;
+        
     }
 
     & .text2 {
         position: absolute;
-        bottom: 225px;
+        bottom: 200px;
         //text-align:center;
         margin-left: 30px;
     }
