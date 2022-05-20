@@ -197,6 +197,12 @@ margin-top: -135px;
 
 & a {
   text-decoration: none;
+  
+}
+
+& h3 {
+  font-weight: 600;
+  color:#5D5E5F;
 }
 `;
 

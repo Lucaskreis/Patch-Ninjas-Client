@@ -125,9 +125,13 @@ export function UserEdit() {
 
           
         </form>
+
+        <button type="submit">CONFIRM</button>
+        <button onClick={deleteUser}>DELETE</button>
+        
       </SInput> 
-          <button type="submit">CONFIRM</button>
-          <button onClick={deleteUser}>DELETE</button>
+
+          
           {/*corrigir o css dos botões*/}
 
       <SPhoto> 
