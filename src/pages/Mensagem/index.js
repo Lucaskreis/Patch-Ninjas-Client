@@ -93,24 +93,32 @@ export function Mensagem() {
         navigate(`/jobEdit/${params.jobId}`)
     }
     
-    const mapFav = fav.map((item) =>{
-        return(item._id)
-    })
 
     
     console.log(params.jobId)
-    console.log(mapFav)
-    async function favoritos(){
-       const response = await api.get("/user/profile");
-      // console.log(response.data.isFav)
+ useEffect(() => {
+     async function fetchFavs(){
+        const response = await api.get("/user/profile");
+        console.log(response.data)
        setFav([...response.data.isFav])
+       console.log(fav)
+     }
+     fetchFavs()
+    },[])  
+
+    async function favoritos(){
+       
+       const mapFav = fav.map((item) =>{
+        return(item._id)
+    })
+        console.log(mapFav)
        const jobsId = params.jobId
        if(mapFav.includes(jobsId)){
-        const jobsId = params.jobId
-            await api.delete("/user/deleteFav", jobsId);
+        
+            await api.delete("/user/deleteFav", {data: {jobsId: jobsId}});
             return
        }
-       await api.patch("/user/favorites",  {jobsId});
+       await api.patch("/user/favorites", {data: {jobsId: jobsId}});
     
        console.log(fav)
     }
