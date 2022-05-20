@@ -152,7 +152,7 @@ export function Mensagem() {
 
                                     <SFavBtn>
                                         <button className="favBtn" onClick={favoritos}>
-                                            <img className="favicon" src={Fav}/>
+                                            <img className="favicon" src={Fav} alt=""/>
                                         </button>
                                         <div className="button2">
                                             <button>
