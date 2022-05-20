@@ -124,7 +124,7 @@ export function Mensagem() {
     
        console.log(fav)
     }
-    async function notFavoritos(){
+   /* async function notFavoritos(){
         const response = await api.get("/user/profile");
         console.log(response.data)
         setFav([...response.data.isFav])
@@ -134,7 +134,7 @@ export function Mensagem() {
          
          await api.delete("/user/deleteFav", {data: {jobId}});
             
-        }
+        }*/
     
      
 
@@ -167,7 +167,7 @@ export function Mensagem() {
 
                                     <SFavBtn>
                                          <button className="favBtn" onClick={favoritos}>
-                                        <button  onClick={notFavoritos}>x</button>
+                                        {/*<button  onClick={notFavoritos}>x</button>*/}
                                             <img className="favicon" src={Fav} alt=""/>
                                         </button>
                                         <div className="button2">
