@@ -72,9 +72,11 @@ export function UserEdit() {
       console.log(error);
     }
   }
-  
+    
+    const formId = form._id
+    console.log(formId)
     function deleteUser() {
-      api.delete("/user/delete-user",form._id)
+      api.delete("/user/delete-user", {formId})
      navigate("/");
       return
   }
@@ -121,10 +123,12 @@ export function UserEdit() {
             placeholder="Phone"
           />
 
+          
+        </form>
+      </SInput> 
           <button type="submit">CONFIRM</button>
           <button onClick={deleteUser}>DELETE</button>
-        </form>
-      </SInput>
+          {/*corrigir o css dos botões*/}
 
       <SPhoto> 
         <img src={loggedInUser.user.img} alt={loggedInUser.user.name} />

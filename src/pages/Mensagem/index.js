@@ -88,17 +88,26 @@ export function Mensagem() {
     function editJob(){
         navigate(`/jobEdit/${params.jobId}`)
     }
+    
+    const mapFav = fav.map((item) =>{
+        return(item._id)
+    })
 
+    
+    console.log(params.jobId)
+    console.log(mapFav)
     async function favoritos(){
        const response = await api.get("/user/profile");
-        console.log(response.data.isFav)
+      // console.log(response.data.isFav)
        setFav([...response.data.isFav])
-        console.log(fav)
-       if(fav.includes(params.jobId)){
-           return 
+       const jobsId = params.jobId
+       if(mapFav.includes(jobsId)){
+        const jobsId = params.jobId
+            await api.delete("/user/deleteFav", jobsId);
+            return
        }
-       await api.patch("/user/update-profile", {isFav: params.jobId} );
-       //funcionando, mas sempre substitui o item e não adiciona outro
+       await api.patch("/user/favorites",  {jobsId});
+    
        console.log(fav)
     }
 
@@ -124,7 +133,7 @@ export function Mensagem() {
                                         <h3>Type:  <span>{item.tags}</span></h3>
                                     </div>
                                 <h3>{item.description}</h3>
-                                <button onClick={favoritos}>Favoritos</button>
+                                <button onClick={favoritos}>Like</button>{/*ternaario*/}
                                         <button  className="button2">
                                             <a target="blank" href={`https://api.whatsapp.com/send?1=pt_BR&phone=55${phone.toString()}`}> Go to WhatsApp</a>
                                         </button>
@@ -154,8 +163,7 @@ export function Mensagem() {
                             return( item.msg.map((element) => {
                                 console.log(element)
                                 return(
-                                    
-                                    
+                            
                                     loggedInUser.user._id === element.user ? 
                                     
                                     (<SRight>

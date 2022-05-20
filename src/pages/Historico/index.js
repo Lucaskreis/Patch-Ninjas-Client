@@ -40,7 +40,6 @@ export function Historico() {
 
     console.log(favorites)
 
-
     return ( 
         <>
 
@@ -96,9 +95,9 @@ export function Historico() {
                     {favorites.map((currentProfile) => {
                             console.log(currentProfile)
                             return ( 
-                               <Link to={`/Mensagem/${currentProfile._id}`} ><h4>{currentProfile.title}</h4></Link>
-
-                                 
+                                <div>
+                                    <Link to={`/Mensagem/${currentProfile._id}`} ><h4>{currentProfile.title}</h4></Link>
+                                </div>
                             );
                         })}
                     </>
