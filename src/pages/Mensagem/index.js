@@ -98,30 +98,45 @@ export function Mensagem() {
     console.log(params.jobId)
  useEffect(() => {
      async function fetchFavs(){
-        const response = await api.get("/user/profile");
-        console.log(response.data)
-       setFav([...response.data.isFav])
-       console.log(fav)
+        
      }
      fetchFavs()
     },[])  
 
     async function favoritos(){
-       
-       const mapFav = fav.map((item) =>{
+       const response = await api.get("/user/profile");
+       console.log(response.data)
+       setFav([...response.data.isFav])
+       console.log(fav)
+       const jobId = params.jobId
+      /* const mapFav = fav.map((item) =>{
         return(item._id)
     })
         console.log(mapFav)
-       const jobsId = params.jobId
+       
        if(mapFav.includes(jobsId)){
         
             await api.delete("/user/deleteFav", {data: {jobsId: jobsId}});
             return
-       }
-       await api.patch("/user/favorites", {data: {jobsId: jobsId}});
+       }*/
+       console.log(params)
+       await api.patch("/user/favorites", {jobId});
     
        console.log(fav)
     }
+   /* async function notFavoritos(){
+        const response = await api.get("/user/profile");
+        console.log(response.data)
+        setFav([...response.data.isFav])
+        console.log(fav)
+        const jobId = params.jobId
+       
+         
+         await api.delete("/user/deleteFav", {data: {jobId}});
+            
+        }*/
+    
+     
 
     return (
         <div>
@@ -151,8 +166,9 @@ export function Mensagem() {
                                     <h3>Description: <span>{item.description}</span></h3>
 
                                     <SFavBtn>
-                                        <button className="favBtn" onClick={favoritos}>
-                                            <img className="favicon" src={Fav}/>
+                                         <button className="favBtn" onClick={favoritos}>
+                                        {/*<button  onClick={notFavoritos}>x</button>*/}
+                                            <img className="favicon" src={Fav} alt=""/>
                                         </button>
                                         <div className="button2">
                                             <button>
@@ -184,7 +200,7 @@ export function Mensagem() {
 
                             
                             return( item.msg.map((element) => {
-                                console.log(element)
+                                
                                 return(
                             
                                     loggedInUser.user._id === element.user ? 
